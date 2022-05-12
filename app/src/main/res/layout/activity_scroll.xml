@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+滚动视图 ScrollView
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/layout_bg"
+    android:orientation="vertical">
+
+    <!--
+    横向滚动条
+    -->
+    <HorizontalScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="200dp">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:text="v幸存者VS大哥 "
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:background="#976C64"
+                />
+
+            <TextView
+                android:layout_width="300dp"
+                android:layout_height="match_parent"
+                android:text="v出现白色特瑞特 "
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:background="#24D88A"
+                />
+        </LinearLayout>
+
+    </HorizontalScrollView>
+
+    <!--
+    纵向滚动条
+    -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:text="从香港返回"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:background="#C5CA59"/>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:text="煽风点火股份瑞特"
+                android:textSize="18sp"
+                android:textColor="@color/black"
+                android:gravity="center"
+                android:background="#28118C"/>
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+</LinearLayout>

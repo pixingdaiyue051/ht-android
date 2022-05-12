@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+ImageView
+ImageButton 继承自 ImageView
+Button可以设置背景图片显示成图片按钮 也可以使用文本显现成文本按钮
+ImageButton只能设置图片 图片可以按比例缩放 可以同时设置前景和背景图片
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/layout_bg"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        android:src="@drawable/iv_1"
+        android:scaleType="centerInside"/>
+
+
+    <ImageButton
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/iv_2"
+        android:scaleType="centerCrop"/>
+
+</LinearLayout>

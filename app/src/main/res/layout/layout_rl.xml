@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+相对布局 RelativeLayout
+下级视图默认在视图左上角
+视图之间的位置都是相对的 互相确定或者有RelativeLayout父视图确定
+-->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/layout_bg"
+    tools:ignore="MissingDefaultResource">
+
+    <!--
+    由父视图决定各子视图位置
+    -->
+    <TextView
+        android:id="@+id/tv_center1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:textSize="20sp"
+        android:text="视图正中间"/>
+
+    <!--<TextView
+        android:id="@+id/tv_center2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:textSize="20sp"
+        android:text="视图水平中间"/>
+
+    <TextView
+        android:id="@+id/tv_center3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:textSize="20sp"
+        android:text="视图垂直中间"/>
+
+    <TextView
+        android:id="@+id/tv_center4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:textSize="20sp"
+        android:text="视图左上角"/>
+
+    <TextView
+        android:id="@+id/tv_center5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:textSize="20sp"
+        android:text="视图右上角"/>
+
+    <TextView
+        android:id="@+id/tv_center6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:textSize="20sp"
+        android:text="alignParentTop"/>
+
+    <TextView
+        android:id="@+id/tv_center7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:textSize="20sp"
+        android:text="alignParentBottom"/>-->
+
+    <!--
+    相对于其他视图
+    -->
+    <TextView
+        android:id="@+id/tv_center4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/tv_center1"
+        android:textSize="20sp"
+        android:text="左侧"/>
+
+</RelativeLayout>

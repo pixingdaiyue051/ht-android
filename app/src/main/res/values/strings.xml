@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">myapp</string>
+    <string name="tv1_text">hello world</string>
+    <string name="tv2_text">hello world hello world</string>
+    <string name="tv3_text">test</string>
+    <string name="btn_next_text">显示意图跳转下一个activity</string>
+    <string name="btn_next_implicit_text">隐式意图跳转下一个activity</string>
+    <string name="btn_login_text">模拟登录</string>
+    <string name="btn_logout_text">模拟退出</string>
+    <string name="btn_meta_data_text">元数据</string>
+    <string name="btn_scroll_text">滚动条</string>
+    <string name="btn_btn_text">按钮</string>
+    <string name="btn_form_text">表单设计</string>
+    <string name="btn_datetime_text">日期时间</string>
+
+
+    <string name="short_label1">first</string>
+    <string name="long_label1">第一个</string>
+
+    <string name="short_label2">second</string>
+    <string name="long_label2">第二个</string>
+
+    <string name="short_label3">third</string>
+    <string name="long_label3">第三个</string>
+</resources>

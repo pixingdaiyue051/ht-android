@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+Button 也是 TextView
+有默认背景色 紫色
+默认文本居中显示
+默认文本全大写
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/layout_bg"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_po_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tv1_text"
+        android:textSize="30sp"
+        android:textColor="@color/black"
+        android:background="#E0003F83"
+        />
+
+    <Button
+        android:id="@+id/btn_po_1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/tv2_text"
+        android:textSize="18sp"
+        />
+
+    <!--
+    textAllCaps  文本是否全部大写 默认true
+    onClick  已废弃
+    -->
+    <Button
+        android:id="@+id/btn_po_2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Hello World"
+        android:textSize="18sp"
+        android:textAllCaps="false"
+        android:onClick="doClick"
+        />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_po_ok"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="启用"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            />
+        <Button
+            android:id="@+id/btn_po_deny"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="禁用"
+            android:textSize="18sp"
+            android:textColor="@color/black"
+            />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <Button
+            android:id="@+id/btn_po_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="test"
+            android:textSize="18sp"
+            android:enabled="false"
+            />
+
+        <TextView
+            android:id="@+id/tv_po_test"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="30dp"
+            android:textColor="@color/black"
+            android:background="#C63030"
+            android:text="test"
+            />
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+layout_gravity gravity
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/layout_bg"
+    android:orientation="horizontal">
+
+    <!--
+    android:layout_gravity="bottom"
+    视图显示在外部主视图内的底端
+    android:gravity="center"
+    视图内部相对当前视图显示在中间
+    -->
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:background="#E8DD0C"
+        android:layout_gravity="bottom"
+        android:gravity="center"
+        >
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="#981D92"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="300dp"
+        android:layout_weight="1"
+        android:layout_margin="10dp"
+        android:background="#E8DD0C"
+        android:layout_gravity="top"
+        android:gravity="center"
+        >
+
+        <LinearLayout
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="#981D92"/>
+
+    </LinearLayout>
+</LinearLayout>

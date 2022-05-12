@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+margin padding
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/layout_bg"
+    android:orientation="vertical">
+
+    <!--
+    android:layout_margin="30dp"
+    视图和外部视图的间距为30dp
+    android:padding="30dp"
+    视图和内部视图的间距为30dp
+    -->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#E8DD0C"
+        android:layout_margin="30dp"
+        android:padding="30dp"
+        >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#981D92"/>
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.tequeno.myapp">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.Myapp">
+        <activity
+            android:name=".MainActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+            <meta-data android:name="sdk.p1" android:value="ddk_001" />
+            <meta-data android:name="sdk.p2" android:value="ddk_002" />
+
+            <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcuts"/>
+        </activity>
+
+        <activity android:name=".Link1Activity" />
+        <activity android:name=".Link2Activity" android:exported="true"/>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginOkActivity" />
+        <activity android:name=".ScrollActivity" />
+        <activity android:name=".BtnActivity" android:exported="true"/>
+        <activity android:name=".FormActivity"  android:exported="true"/>
+        <activity android:name=".DateTimeActivity"  android:exported="true"/>
+    </application>
+
+</manifest>

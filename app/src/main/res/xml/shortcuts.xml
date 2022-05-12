@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shortcuts  xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!--
+    清单文件中加入
+    <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcuts"/>
+    需要res/xml文件夹 android:name 是固定写法
+
+    1、 enabled：表示当前快捷方式是否可使用
+    2、 icon： 快捷方式图标
+    3、 shortcutDisabledMessage： 快捷方式不可使用时显示的名字
+    4、 shortcutId：快捷方式标识
+    5、 shortcutLongLabel：长按下图标弹出来列表框中每个快捷名
+    6、 shortcutShortLabel：快捷是可以单独显示在桌面上的，显示名为shortcutShortLabel
+    7、 targetClass：点击快捷方式进入的Activity
+    8、 categories 默认写死即可
+    -->
+
+    <shortcut
+        android:shortcutId="first"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher_round"
+        android:shortcutShortLabel="@string/btn_btn_text"
+        android:shortcutLongLabel="@string/btn_btn_text">
+
+        <intent android:action="android.intent.action.VIEW"
+            android:targetPackage="com.tequeno.myapp"
+            android:targetClass="com.tequeno.myapp.BtnActivity"/>
+        <categories name="android.shortcut.conversation"/>
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="second"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher_round"
+        android:shortcutShortLabel="@string/btn_form_text"
+        android:shortcutLongLabel="@string/btn_form_text">
+
+        <intent android:action="android.intent.action.VIEW"
+            android:targetPackage="com.tequeno.myapp"
+            android:targetClass="com.tequeno.myapp.FormActivity"/>
+        <categories name="android.shortcut.conversation"/>
+    </shortcut>
+
+    <shortcut
+        android:shortcutId="third"
+        android:enabled="true"
+        android:icon="@mipmap/ic_launcher_round"
+        android:shortcutShortLabel="@string/btn_datetime_text"
+        android:shortcutLongLabel="@string/btn_datetime_text">
+
+        <intent android:action="android.intent.action.VIEW"
+            android:targetPackage="com.tequeno.myapp"
+            android:targetClass="com.tequeno.myapp.DateTimeActivity"/>
+        <categories name="android.shortcut.conversation"/>
+    </shortcut>
+
+</shortcuts>

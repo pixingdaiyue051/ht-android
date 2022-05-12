@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">bar</string>
+    <string name="tv1_text">ctl</string>
+    <string name="tv2_text">hello world hello world hello world hello world hello world hello world hello world hello world </string>
+    <string name="btn_login_text">login</string>
+    <string name="btn_reset_text">reset</string>
+    <string name="et1_hint">请输入用户名</string>
+    <string name="et2_hint">请输入密码</string>
+    <string name="btn_pb1_text">显示隐藏</string>
+    <string name="btn_pb2_text">开始结束</string>
+    <string name="btn_notify1_text">测试通知</string>
+    <string name="btn_notify2_text">取消通知</string>
+</resources>

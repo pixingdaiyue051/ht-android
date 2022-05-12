@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+网格布局 GridLayout
+默认从左到右 从上到下排列
+视图之间的位置都是相对的 互相确定或者有RelativeLayout父视图确定
+-->
+<GridLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/layout_bg"
+    android:columnCount="2"
+    android:rowCount="2"
+    tools:ignore="MissingDefaultResource">
+
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_columnWeight="1"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="飒飒法发"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:background="#D58787"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_columnWeight="1"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="许多发嘎嘎人文风光"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:background="#62BA51"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_columnWeight="1"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="的发射工位"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:background="#3F47EF"
+        />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_columnWeight="1"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text=" 操作v撒个人威望"
+        android:textSize="18sp"
+        android:textColor="@color/black"
+        android:background="#870871"
+        />
+
+
+</GridLayout>

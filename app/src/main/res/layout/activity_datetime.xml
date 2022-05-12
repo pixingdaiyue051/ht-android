@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+时间控件
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/layout_bg"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/tv_datetime1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:background="@color/light_blue" />
+
+    <!--固定日期控件 默认是日历选择形式-->
+    <DatePicker
+        android:id="@+id/form_date_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:calendarViewShown="false"
+        android:datePickerMode="spinner" />
+
+    <Button
+        android:id="@+id/btn_fixed_date_ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="确定" />
+
+    <!--固定时间控件 默认是时钟选择形式-->
+    <TimePicker
+        android:id="@+id/form_time_picker"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:timePickerMode="spinner"/>
+
+    <Button
+        android:id="@+id/btn_fixed_time_ok"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="确定" />
+
+    <Button
+        android:id="@+id/btn_date_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="弹出选择日期" />
+
+    <Button
+        android:id="@+id/btn_time_dialog"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="弹出选择时间" />
+</LinearLayout>

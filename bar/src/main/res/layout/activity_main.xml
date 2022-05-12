@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="218dp"
+        android:layout_height="36dp"
+
+        android:layout_marginStart="81dp"
+        android:layout_marginEnd="112dp"
+
+        android:clickable="true"
+        android:ellipsize="marquee"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+
+        android:marqueeRepeatLimit="marquee_forever"
+        android:shadowColor="#238B9C"
+        android:shadowDx="10"
+        android:shadowDy="10"
+
+        android:shadowRadius="0.6"
+        android:singleLine="true"
+        android:text="@string/tv2_text"
+
+        android:textColor="#F136AD"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <requestFocus />
+    </TextView>
+
+    <EditText
+        android:id="@+id/et1"
+        android:layout_width="171dp"
+        android:layout_height="41dp"
+
+        android:layout_marginTop="1dp"
+        android:layout_marginEnd="240dp"
+        android:hint="@string/et1_hint"
+
+        android:inputType="text"
+        android:textColorHint="#ABC6C8"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+
+    <EditText
+        android:id="@+id/et2"
+        android:layout_width="171dp"
+        android:layout_height="41dp"
+
+        android:layout_marginEnd="240dp"
+        android:hint="@string/et2_hint"
+
+        android:inputType="textPassword"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et1" />
+
+    <Button
+        android:id="@+id/btn_login"
+        android:layout_width="53dp"
+        android:layout_height="38dp"
+
+        android:layout_marginEnd="1dp"
+        android:background="@drawable/ic_baseline_account_circle_24"
+
+        android:text="@string/btn_login_text"
+        app:layout_constraintEnd_toStartOf="@+id/btn_reset"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/et2" />
+
+    <Button
+        android:id="@+id/btn_reset"
+        android:layout_width="53dp"
+        android:layout_height="38dp"
+
+        android:layout_marginEnd="305dp"
+        android:background="@drawable/ic_baseline_adb_24"
+
+        android:text="@string/btn_reset_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_login"
+        app:layout_constraintTop_toBottomOf="@+id/et2" />
+
+    <ImageView
+        android:id="@+id/img1"
+        android:layout_width="175dp"
+        android:layout_height="76dp"
+
+        android:layout_marginTop="123dp"
+        android:layout_marginEnd="241dp"
+
+        android:scaleType="fitXY"
+        android:src="@mipmap/ic_img_1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login" />
+
+    <ProgressBar
+        android:id="@+id/pb1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="3dp"
+        android:layout_marginEnd="9dp"
+        app:layout_constraintEnd_toStartOf="@+id/pb2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/img1" />
+
+    <ProgressBar
+        android:id="@+id/pb2"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="171dp"
+        android:layout_height="16dp"
+
+        android:layout_marginStart="9dp"
+
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="180dp"
+        android:indeterminate="true"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/pb1"
+        app:layout_constraintTop_toBottomOf="@+id/img1" />
+
+    <Button
+        android:id="@+id/btn_pb1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="19dp"
+        android:text="@string/btn_pb1_text"
+        app:layout_constraintEnd_toStartOf="@+id/btn_pb2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pb1" />
+
+    <Button
+        android:id="@+id/btn_pb2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="216dp"
+        android:text="@string/btn_pb2_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_pb1"
+        app:layout_constraintTop_toBottomOf="@+id/pb2" />
+
+    <Button
+        android:id="@+id/btn_notify1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="1dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="19dp"
+        android:text="@string/btn_notify1_text"
+        app:layout_constraintEnd_toStartOf="@+id/btn_notify2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_pb1" />
+
+    <Button
+        android:id="@+id/btn_notify2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+
+        android:layout_marginStart="19dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="216dp"
+        android:text="@string/btn_notify2_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/btn_notify1"
+        app:layout_constraintTop_toBottomOf="@+id/btn_pb2" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

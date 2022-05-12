@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+形状 默认是矩形
+-->
+<shape xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- 内部填充色 -->
+    <solid android:color="@color/normal" />
+
+    <!-- 轮廓粗细和边框颜色 -->
+    <stroke
+        android:width="2dp"
+        android:color="@color/gray" />
+
+    <!-- 四个圆角的半径 使矩形成为圆角矩形 -->
+    <corners android:radius="5dp" />
+
+    <!-- 形状四个方向的边距 -->
+    <padding
+        android:bottom="3dp"
+        android:left="3dp"
+        android:right="3dp"
+        android:top="3dp" />
+</shape>
