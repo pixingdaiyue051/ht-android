@@ -33,6 +33,6 @@ public final class MainUtil {
     }
 
     public static String toJsonString(String uname, String pwd) {
-        return new Gson().toJson(new LoginDto().setUname(uname).setPwd(pwd));
+        return new Gson().toJson(new LoginDto().setUname(uname).setPassword(pwd));
     }
 }

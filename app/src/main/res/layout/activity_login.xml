@@ -6,10 +6,147 @@
     android:background="@color/layout_bg"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_login"
+    <RadioGroup
+        android:id="@+id/rg_choose"
+        android:layout_width="match_parent"
+        android:layout_height="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:orientation="horizontal">
+
+        <RadioButton
+            android:id="@+id/rb_otp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="@string/rb_otp_text"
+            android:textColor="@color/black"
+            android:checked="true"/>
+
+        <RadioButton
+            android:id="@+id/rb_password"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="@string/rb_password_text"
+            android:textColor="@color/black"/>
+
+    </RadioGroup>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
+
+        <TextView
+            android:id="@+id/ll_pre_phone"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:text="@string/ll_phone_pre_text"
+            android:textColor="@color/black"
+            android:gravity="center"/>
+
+        <EditText
+            android:id="@+id/form_phone"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@drawable/ic_edit_selector"
+            android:hint="@string/form_phone_hint"
+            android:inputType="phone"
+            android:maxLength="11"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_otp"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp">
+
+        <TextView
+            android:id="@+id/ll_pre_otp"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/ll_otp_pre_text"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/form_otp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_edit_selector"
+            android:hint="@string/form_otp_hint"
+            android:inputType="number"
+            android:maxLength="6"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/form_fetch_otp"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@drawable/ic_btn_selector"
+            android:text="@string/form_fetch_otp_text"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_password"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:visibility="gone">
+
+        <TextView
+            android:id="@+id/ll_pre_password"
+            android:layout_width="50dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="@string/ll_password_pre_text"
+            android:textColor="@color/black" />
+
+        <EditText
+            android:id="@+id/form_password"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_edit_selector"
+            android:hint="@string/form_password_hint"
+            android:inputType="textPassword"
+            android:maxLength="8"
+            android:textColor="@color/black" />
+
+        <Button
+            android:id="@+id/form_forget_password"
+            android:layout_width="100dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:background="@drawable/ic_btn_selector"
+            android:text="@string/form_forget_password_text"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
+    <CheckBox
+        android:id="@+id/form_remember_password"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/btn_login_text"/>
+        android:layout_height="30dp"
+        android:button="@drawable/ic_ck_selector"
+        android:text="@string/form_remember_password_text"
+        android:textColor="@color/black"
+        android:visibility="gone"/>
+
+    <Button
+        android:id="@+id/form_login"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:background="@drawable/ic_btn_selector"
+        android:text="@string/btn_login_text"
+        android:textColor="@color/black"/>
 
 </LinearLayout>

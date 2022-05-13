@@ -123,3 +123,21 @@
     - datetime              日期和时间的组合 可以有-/:
     - date                  日期可以有-/
     - time                  时间可以有:
+## 数据存储
+1. SharedPreferences 共享参数
+    - 轻量级 采用 k-v 形式存储的 xml文件
+    - 文件路径 /data/data/应用包名/shared_prefs/xxx.xml
+    - 简单文本且孤立数据
+    - app个性化配置数据
+2. SQLite
+    - 遵守ACID关系型轻量级数据库
+    - 整个数据库都是放置在宿主机上一个单一的文件
+    - 事务的开启提交回滚都是直接锁整个文件
+3. SQLiteDatabases
+    - 管理SQLite的工具
+    - API-DMI
+        - openDatabase  打开指定文件数据库
+        - isOpen    数据库是否已打开
+        - close     关闭数据库
+        - getVersion    获取版本号
+        - setVersion    设置版本号

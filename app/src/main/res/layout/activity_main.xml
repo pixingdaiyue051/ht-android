@@ -22,11 +22,11 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_fake_login"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="@string/btn_login_text"/>
+            android:text="@string/btn_fake_login_text"/>
 
         <Button
             android:id="@+id/btn_meta_data"

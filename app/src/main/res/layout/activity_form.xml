@@ -71,6 +71,7 @@
             android:text="游戏" />
     </LinearLayout>
 
+    <!-- 单选框 默认垂直排列 -->
     <RadioGroup
         android:id="@+id/rb_group"
         android:layout_width="match_parent"

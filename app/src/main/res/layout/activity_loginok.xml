@@ -5,16 +5,6 @@
     android:background="@color/layout_bg"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="首页"
-        android:layout_gravity="center"
-        android:gravity="center"
-        android:textSize="30sp"
-        android:background="#89B55A"
-        android:textColor="@color/black"/>
-
     <Button
         android:id="@+id/btn_logout"
         android:layout_width="wrap_content"

@@ -5,7 +5,7 @@ public class LoginDto {
     private String phone;
     private String otp;
     private String uname;
-    private String pwd;
+    private String password;
 
     public LoginDto() {
     }
@@ -37,12 +37,12 @@ public class LoginDto {
         return this;
     }
 
-    public String getPwd() {
-        return pwd;
+    public String getPassword() {
+        return password;
     }
 
-    public LoginDto setPwd(String pwd) {
-        this.pwd = pwd;
+    public LoginDto setPassword(String password) {
+        this.password = password;
         return this;
     }
 }

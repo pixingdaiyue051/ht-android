@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity {
      * 模拟登录
      */
     private void login() {
-        Button btnLogin = findViewById(R.id.btn_login);
+        Button btnLogin = findViewById(R.id.btn_fake_login);
         btnLogin.setOnClickListener(view -> {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
