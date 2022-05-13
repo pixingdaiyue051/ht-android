@@ -12,7 +12,6 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
@@ -78,17 +77,17 @@ public class FormActivity extends AppCompatActivity {
             String uname = unameEditor.getText().toString();
             if (TextUtils.isEmpty(uname)) {
                 Log.d(TAG, "请输入用户名");
-                Toast.makeText(this, "请输入用户名", Toast.LENGTH_SHORT).show();
+                MainUtil.toast(this, "请输入用户名");
                 return;
             }
             String pwd = pwdEditor.getText().toString();
             if (TextUtils.isEmpty(pwd)) {
                 Log.d(TAG, "请输入密码");
-                Toast.makeText(this, "请输入密码", Toast.LENGTH_SHORT).show();
+                MainUtil.toast(this, "请输入密码");
                 return;
             }
             Log.d(TAG, String.format("输入内容 %s", MainUtil.toJsonString(uname, pwd)));
-            Toast.makeText(this, String.format("输入内容 %s", MainUtil.toJsonString(uname, pwd)), Toast.LENGTH_SHORT).show();
+            MainUtil.toast(this, String.format("输入内容 %s", MainUtil.toJsonString(uname, pwd)));
         });
 
         // 对话框

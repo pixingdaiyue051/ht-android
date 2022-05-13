@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.RadioGroup;
-import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -58,6 +57,7 @@ public class LoginActivity extends AppCompatActivity {
 
     /**
      * 判断登录方式
+     *
      * @return
      */
     private boolean isOtpLogin() {
@@ -67,47 +67,51 @@ public class LoginActivity extends AppCompatActivity {
     /**
      * 校验手机号是否符合规范
      * 应采用正则匹配
+     *
      * @return
      */
     private boolean isCorrectPhone() {
         String text = formPhone.getText().toString();
         boolean checked = !TextUtils.isEmpty(text) && text.length() == 11;
         if (!checked) {
-            Toast.makeText(this, "请输入11位手机号", Toast.LENGTH_SHORT).show();
+            MainUtil.toast(this, "请输入11位手机号");
         }
         return checked;
     }
 
     /**
      * 校验验证码是否符合规范
-     *      应采用正则匹配
+     * 应采用正则匹配
+     *
      * @return
      */
     private boolean isCorrectOtp() {
         String text = formOtp.getText().toString();
         boolean checked = !TextUtils.isEmpty(text) && text.length() == 6;
         if (!checked) {
-            Toast.makeText(this, "请输入6位验证码", Toast.LENGTH_SHORT).show();
+            MainUtil.toast(this, "请输入6位验证码");
         }
         return checked;
     }
 
     /**
      * 校验密码是否符合规范
-     *      应采用正则匹配
+     * 应采用正则匹配
+     *
      * @return
      */
     private boolean isCorrectPassword() {
         String text = formPassword.getText().toString();
         boolean checked = !TextUtils.isEmpty(text) && text.length() == 8;
         if (!checked) {
-            Toast.makeText(this, "请输入8位密码", Toast.LENGTH_SHORT).show();
+            MainUtil.toast(this, "请输入8位密码");
         }
         return checked;
     }
 
     /**
      * 判断是否需要记住密码
+     *
      * @return
      */
     private boolean needRememberPassword() {
@@ -116,6 +120,7 @@ public class LoginActivity extends AppCompatActivity {
 
     /**
      * 不同的登陆方式 切换不同的显示控件
+     *
      * @param group
      * @param checkId
      */

@@ -13,7 +13,7 @@
             android:name=".SharedPrefsActivity"
             android:exported="false" />
         <activity
-            android:name=".SQLiteDatabasesActivity"
+            android:name=".SQLiteDbActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

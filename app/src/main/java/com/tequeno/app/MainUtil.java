@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Context;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.Toast;
 
 import com.google.gson.Gson;
 
@@ -34,5 +35,9 @@ public final class MainUtil {
 
     public static String toJsonString(String uname, String pwd) {
         return new Gson().toJson(new LoginDto().setUname(uname).setPassword(pwd));
+    }
+
+    public static void toast(Context context, String msg) {
+        Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
 }
