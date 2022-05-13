@@ -1,4 +1,4 @@
-package com.jiuguan.rdm;
+package com.tequeno.rdm;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

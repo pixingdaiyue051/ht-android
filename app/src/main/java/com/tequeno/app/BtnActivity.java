@@ -1,4 +1,4 @@
-package com.tequeno.myapp;
+package com.tequeno.app;
 
 import android.os.Bundle;
 import android.util.Log;

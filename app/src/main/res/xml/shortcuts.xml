@@ -24,8 +24,8 @@
         android:shortcutLongLabel="@string/btn_btn_text">
 
         <intent android:action="android.intent.action.VIEW"
-            android:targetPackage="com.tequeno.myapp"
-            android:targetClass="com.tequeno.myapp.BtnActivity"/>
+            android:targetPackage="com.tequeno.app"
+            android:targetClass="com.tequeno.app.BtnActivity"/>
         <categories name="android.shortcut.conversation"/>
     </shortcut>
 
@@ -37,8 +37,8 @@
         android:shortcutLongLabel="@string/btn_form_text">
 
         <intent android:action="android.intent.action.VIEW"
-            android:targetPackage="com.tequeno.myapp"
-            android:targetClass="com.tequeno.myapp.FormActivity"/>
+            android:targetPackage="com.tequeno.app"
+            android:targetClass="com.tequeno.app.FormActivity"/>
         <categories name="android.shortcut.conversation"/>
     </shortcut>
 
@@ -50,8 +50,8 @@
         android:shortcutLongLabel="@string/btn_datetime_text">
 
         <intent android:action="android.intent.action.VIEW"
-            android:targetPackage="com.tequeno.myapp"
-            android:targetClass="com.tequeno.myapp.DateTimeActivity"/>
+            android:targetPackage="com.tequeno.app"
+            android:targetClass="com.tequeno.app.DateTimeActivity"/>
         <categories name="android.shortcut.conversation"/>
     </shortcut>
 

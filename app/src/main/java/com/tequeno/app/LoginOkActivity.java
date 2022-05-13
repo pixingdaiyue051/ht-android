@@ -1,4 +1,4 @@
-package com.tequeno.myapp;
+package com.tequeno.app;
 
 import android.content.Intent;
 import android.os.Bundle;

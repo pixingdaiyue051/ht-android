@@ -1,4 +1,4 @@
-package com.tequeno.myapp;
+package com.tequeno.app;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;

@@ -12,7 +12,7 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
-rootProject.name = "myapp"
+rootProject.name = "app"
 include ':app'
 include ':bar'
 include ':rdm'

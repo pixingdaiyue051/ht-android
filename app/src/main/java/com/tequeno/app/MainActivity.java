@@ -1,4 +1,4 @@
-package com.tequeno.myapp;
+package com.tequeno.app;
 
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -89,7 +89,7 @@ public class MainActivity extends AppCompatActivity {
 
             Intent intent = new Intent();
             // 跳转到其他模块或者第三方模块的应用
-            intent.setAction("com.tequeno.bar.MyIntentActivity");
+            intent.setAction("com.tequeno.bar.myintent");
 
             startActivity(intent);
         });
