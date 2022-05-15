@@ -26,6 +26,7 @@ public class SharedPrefsActivity extends AppCompatActivity {
 
         // 获取sharedPreferences
         // 指定保存的文件名和访问模式 private 表示只有当前项目可以访问
+        // 内部存储空间 /data/data/应用包名/shared_prefs/cs_cfg.xml
         preferences = getSharedPreferences("cs_cfg", Context.MODE_PRIVATE);
 
 

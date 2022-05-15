@@ -3,6 +3,7 @@ package com.tequeno.rdm;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -24,6 +25,7 @@ public class SQLiteDbActivity extends AppCompatActivity {
         Button btn2 = findViewById(R.id.btn2);
         btn1.setOnClickListener(this::createDb);
         btn2.setOnClickListener(this::removeDb);
+        // 内部存储空间  /data/data/应用包名/files/test1.db
         dbName = getFilesDir() + "/test1.db";
 
         Button btnC = findViewById(R.id.btn_c);
@@ -40,7 +42,7 @@ public class SQLiteDbActivity extends AppCompatActivity {
 
     private void createDb(View view) {
         Log.d(TAG, "createDb: ");
-        SQLiteDatabase db = openOrCreateDatabase("/test.db", Context.MODE_PRIVATE, null);
+        SQLiteDatabase db = openOrCreateDatabase(dbName, Context.MODE_PRIVATE, null);
         if (null != db) {
             Log.d(TAG, "数据库已创建,路径:" + db.getPath());
         } else {

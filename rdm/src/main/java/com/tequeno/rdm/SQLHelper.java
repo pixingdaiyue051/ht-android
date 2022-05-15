@@ -21,12 +21,18 @@ public class SQLHelper extends SQLiteOpenHelper {
     private SQLiteDatabase mRdb = null;
     private SQLiteDatabase mWdb = null;
 
+    /**
+     * @param context
+     */
     private SQLHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 
     /**
      * 单例模式获取SQLHelper
+     * 每次创建SQLHelper时都会触发onCreate方法
+     * 如果db_version有升级会触发onUpgrade方法
+     * 如果db_version有降级会触发onDowngrade方法
      *
      * @param context
      * @return
@@ -104,6 +110,7 @@ public class SQLHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase db) {
         String sql = "create table if not exists " + TABLE_NAME + " (id integer primary key autoincrement not null, name varchar(32) not null default '')";
         db.execSQL(sql);
+        // 内部存储空间  /data/data/应用包名/databases/test.db
         Log.d(TAG, "onCreate: SQLiteDatabase：" + db.getPath());
     }
 

@@ -141,3 +141,11 @@
         - close     关闭数据库
         - getVersion    获取版本号
         - setVersion    设置版本号
+4. Application
+    - 应用的启动时会创建唯一的一个application实列
+    - application和activity的关系 类比 进程和线程的关系
+    - 适合使用application存储公共变量的场景
+        - 频繁读取的数据 比如 用户id 手机号
+        - 意图跳转时不方便传递的数据 比如 位图 二进制文件
+        - 容易因为频繁创建而分配内存的对象 比如 Handler
+        - 需要整个app应用阶段都存在的数据 比如 websocket
