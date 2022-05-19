@@ -2,15 +2,15 @@ package com.tequeno.rdm;
 
 public class User {
 
-    private Long id;
+    private Long _id;
     private String name;
 
-    public Long getId() {
-        return id;
+    public Long get_id() {
+        return _id;
     }
 
-    public User setId(Long id) {
-        this.id = id;
+    public User set_id(Long _id) {
+        this._id = _id;
         return this;
     }
 
@@ -26,7 +26,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "id=" + id +
+                "_id=" + _id +
                 ", name='" + name + '\'' +
                 '}';
     }

@@ -3,18 +3,20 @@ package com.tequeno.rdm;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
-import android.os.Environment;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.tequeno.rdm.dao.BookDao;
+
 public class SQLiteDbActivity extends AppCompatActivity {
 
     private final String TAG = this.getClass().getSimpleName();
     private String dbName;
-    private SQLHelper helper;
+    private UserOpenHelper userOpenHelper;
+    private BookDao mBookDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,50 +65,60 @@ public class SQLiteDbActivity extends AppCompatActivity {
     private void c(View view) {
         Log.d(TAG, "c: ");
         User user = new User().setName("test1");
-        boolean ok = helper.insert(user);
-        if(ok) {
+        boolean ok = userOpenHelper.insert(user);
+        if (ok) {
             Log.d(TAG, "c: " + user);
         }
+
+//        Book book = new Book();
+//        book.setName("zgjdbg");
+//        book.setPress("svdgdh");
+//        book.setPrice(1L);
+//        mBookDao.insert(book);
+//        Log.d(TAG, "c: " + book);
     }
 
     private void r(View view) {
         Log.d(TAG, "r: ");
-        helper.query("");
+        userOpenHelper.query("");
+
+//        List<Book> bookList = mBookDao.queryAll();
+//        bookList.forEach(System.out::println);
     }
 
     private void u(View view) {
         Log.d(TAG, "u: ");
-        User user = new User().setId(1L).setName("name1");
-        boolean ok = helper.update(user);
-        if(ok) {
+        User user = new User().set_id(1L).setName("name1");
+        boolean ok = userOpenHelper.update(user);
+        if (ok) {
             Log.d(TAG, "u: " + user);
         }
     }
 
     private void d(View view) {
         Log.d(TAG, "d: ");
-        boolean ok = helper.delete(2L);
-        if(ok) {
+        boolean ok = userOpenHelper.delete(2L);
+        if (ok) {
             Log.d(TAG, "d: deleted");
         }
     }
 
     private void up(View view) {
         Log.d(TAG, "up: ");
-        helper.upgrade("ALTER TABLE user ADD code varchar(30) not null default ''");
     }
 
     @Override
     protected void onStart() {
         Log.d(TAG, "onStart: ");
         super.onStart();
-        helper = SQLHelper.getInstance(this);
+        userOpenHelper = UserOpenHelper.getInstance(this);
+        mBookDao = MyApplication.getInstance().getDb().bookDao();
     }
 
     @Override
     protected void onStop() {
         Log.d(TAG, "onStop: ");
         super.onStop();
-        helper.close();
+        userOpenHelper.close();
     }
 }

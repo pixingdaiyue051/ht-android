@@ -13,6 +13,13 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+//        javaCompileOptions {
+//            annotationProcessorOptions {
+//                // 指定room schema的位置
+//                arguments = ["room.schemaLocation": "$projectDir/schemas"]
+//            }
+//        }
     }
 
     buildTypes {
@@ -35,4 +42,10 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    implementation 'com.google.guava:guava:30.1.1-android'
+
+//    api 'com.jiuguan.family-call-api:2.7.7-SNAPSHOT'
+    implementation 'androidx.room:room-runtime:2.4.2'
+    annotationProcessor 'androidx.room:room-compiler:2.4.2'
 }

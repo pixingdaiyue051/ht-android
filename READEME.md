@@ -85,6 +85,13 @@
     - FLAG_ACTIVITY_CLEAR_TOP    类似singleTask 如果有就清空其上方所有活动再新建一个
     - FLAG_ACTIVITY_NO_HISTORY    类似standard 栈顶不保存创建的活动 每次都是全新的standard流程
     - FLAG_ACTIVITY_CLEAR_TASK   清空栈内所有活动再新建  需要配合 FLAG_ACTIVITY_NEW_TASK一起使用
+## 四大组件
+1. Activity
+2. Service
+3. BroadcastReceiver
+4. ContentProvider
+    - 为app存取内部数据提统一接口 方便不同应用之间的数据共享 跨进程通信
+    - FileProvider 对第三方应用暴露文件 授权读写权限
 ## 意图
 1. 显示意图    通过设置componentName直接指明的跳转的意向和动作
     - Intent 构造类中指定来源和去向
@@ -108,40 +115,41 @@
     - -xxhdpi 高等分辨率 1080*1920               一般对应6~6.5inch手机
     - -xxxhdpi 等分辨率 1440*2560              一般对应超过7inch智能设备
 2. 形状图形 圆角 椭圆 矩形 直线 圆环
-## EditText
-1. hint             提示文字 默认胡灰色显示
-2. textColorHint    提示文字颜色
-3. maxLength        输入的最大长度
-4. inputType        输入类型
-    - text                  文本
-    - textPassword          文本密码
-    - number                数字
-    - numberSigned          带符号数字 允许负号
-    - numberDecimal         浮点数
-    - numberPassword        数字密码
-    - phone                 手机号
-    - datetime              日期和时间的组合 可以有-/:
-    - date                  日期可以有-/
-    - time                  时间可以有:
+3. EditText
+    1. hint             提示文字 默认胡灰色显示
+    2. textColorHint    提示文字颜色
+    3. maxLength        输入的最大长度
+    4. inputType        输入类型
+        - text                  文本
+        - textPassword          文本密码
+        - number                数字
+        - numberSigned          带符号数字 允许负号
+        - numberDecimal         浮点数
+        - numberPassword        数字密码
+        - phone                 手机号
+        - datetime              日期和时间的组合 可以有-/:
+        - date                  日期可以有-/
+        - time                  时间可以有:
 ## 数据存储
 1. SharedPreferences 共享参数
-    - 轻量级 采用 k-v 形式存储的 xml文件
+    - 内部存储空间
     - 文件路径 /data/data/应用包名/shared_prefs/xxx.xml
+    - 轻量级 采用 k-v 形式存储的 xml文件
     - 简单文本且孤立数据
     - app个性化配置数据
 2. SQLite
+    - 内部存储空间
+    - 文件路径 /data/data/应用包名/databases/xxx.db
     - 遵守ACID关系型轻量级数据库
     - 整个数据库都是放置在宿主机上一个单一的文件
     - 事务的开启提交回滚都是直接锁整个文件
-3. SQLiteDatabases
-    - 管理SQLite的工具
-    - API-DMI
-        - openDatabase  打开指定文件数据库
-        - isOpen    数据库是否已打开
-        - close     关闭数据库
-        - getVersion    获取版本号
-        - setVersion    设置版本号
+    - SQLiteDatabases 管理SQLite的工具
+3. externalStorage
+    - 外部存储空间
+    - 私有读写 文件路径 /sdcard/Android/data/应用包名
+    - 公共读写 文件路径 /sdcard
 4. Application
+    - 内存数据
     - 应用的启动时会创建唯一的一个application实列
     - application和activity的关系 类比 进程和线程的关系
     - 适合使用application存储公共变量的场景

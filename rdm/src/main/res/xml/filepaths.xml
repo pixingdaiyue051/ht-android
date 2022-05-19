@@ -1,0 +1,7 @@
+<paths>
+    <!-- 访问外部目录的所有文件 即/sdcard-->
+    <!--<external-path name="0" path="."/>-->
+    <!-- 访问外部目录的Download目录 即/sdcard/Download -->
+    <external-path name="1" path="Download"/>
+    
+</paths>

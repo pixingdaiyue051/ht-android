@@ -8,24 +8,21 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.text.TextUtils;
 import android.util.Log;
 
-public class SQLHelper extends SQLiteOpenHelper {
+public class UserOpenHelper extends SQLiteOpenHelper {
 
     private final String TAG = this.getClass().getSimpleName();
 
-    private final static String DB_NAME = "test.db";
-    private final static String TABLE_NAME = "user";
-    private static int DB_VERSION = 1;
-    private String SQL;
-    private static SQLHelper INSTANCE = null;
+    private static UserOpenHelper mHelper = null;
 
+    private final String TABLE_NAME = "user";
     private SQLiteDatabase mRdb = null;
     private SQLiteDatabase mWdb = null;
 
     /**
      * @param context
      */
-    private SQLHelper(Context context) {
-        super(context, DB_NAME, null, DB_VERSION);
+    private UserOpenHelper(Context context) {
+        super(context, MyApplication.getInstance().DB_NAME, null, 1);
     }
 
     /**
@@ -37,11 +34,11 @@ public class SQLHelper extends SQLiteOpenHelper {
      * @param context
      * @return
      */
-    public static SQLHelper getInstance(Context context) {
-        if (null == INSTANCE) {
-            INSTANCE = new SQLHelper(context);
+    public static UserOpenHelper getInstance(Context context) {
+        if (null == mHelper) {
+            mHelper = new UserOpenHelper(context);
         }
-        return INSTANCE;
+        return mHelper;
     }
 
     /**
@@ -51,7 +48,7 @@ public class SQLHelper extends SQLiteOpenHelper {
      */
     public SQLiteDatabase openRdb() {
         if (null == mRdb || !mRdb.isOpen()) {
-            mRdb = INSTANCE.getReadableDatabase();
+            mRdb = mHelper.getReadableDatabase();
         }
         return mRdb;
     }
@@ -63,7 +60,7 @@ public class SQLHelper extends SQLiteOpenHelper {
      */
     public SQLiteDatabase openWdb() {
         if (null == mWdb || !mWdb.isOpen()) {
-            mWdb = INSTANCE.getWritableDatabase();
+            mWdb = mHelper.getWritableDatabase();
         }
         return mWdb;
     }
@@ -85,20 +82,6 @@ public class SQLHelper extends SQLiteOpenHelper {
     public void close() {
         closeRdb();
         closeWdb();
-    }
-
-    public int getCurrentVersion() {
-        return DB_VERSION;
-    }
-
-    public void upgrade(String sql) {
-        DB_VERSION++;
-        SQL = sql;
-    }
-
-    public void upgrade(int newVersion, String sql) {
-        DB_VERSION = newVersion;
-        SQL = sql;
     }
 
     /**
@@ -126,35 +109,48 @@ public class SQLHelper extends SQLiteOpenHelper {
         Log.d(TAG, "onUpgrade: SQLiteDatabase：" + db.getPath());
         Log.d(TAG, "onUpgrade: oldVersion：" + oldVersion);
         Log.d(TAG, "onUpgrade: newVersion：" + newVersion);
-        db.execSQL(SQL);
     }
 
-    public boolean insert(User user) {
-        ContentValues content = new ContentValues();
-        content.put("name", user.getName());
+    @Override
+    public void onOpen(SQLiteDatabase db) {
+        super.onOpen(db);
+    }
+
+    public long insert(ContentValues content) {
         long rowId = 0;
         SQLiteDatabase wdb = this.openWdb();
         wdb.beginTransaction();
         try {
             rowId = wdb.insert(TABLE_NAME, "", content);
-            rowId = wdb.insert(TABLE_NAME, "", content);
-            rowId = wdb.insert(TABLE_NAME, "", content);
-            rowId = wdb.insert(TABLE_NAME, "", content);
-            Log.d(TAG, "insert: " + 1 / 0);
+//            rowId = wdb.insert(TABLE_NAME, "", content);
+//            rowId = wdb.insert(TABLE_NAME, "", content);
+//            rowId = wdb.insert(TABLE_NAME, "", content);
+//            Log.d(TAG, "insert: " + 1 / 0);
             wdb.setTransactionSuccessful();
         } catch (Exception e) {
             Log.e(TAG, "insert: ", e);
             // 异常 数据回滚
+        } finally {
             wdb.endTransaction();
         }
-        user.setId(rowId);
-        return rowId > 0;
+        return rowId;
+    }
+
+    public boolean insert(User user) {
+        ContentValues content = new ContentValues();
+        content.put("name", user.getName());
+        long rowId = this.insert(content);
+        if (rowId > 0) {
+            user.set_id(rowId);
+            return true;
+        }
+        return false;
     }
 
     public boolean update(User user) {
         ContentValues content = new ContentValues();
         content.put("name", user.getName());
-        int affectedRows = this.openWdb().update(TABLE_NAME, content, "id=?", new String[]{user.getId().toString()});
+        int affectedRows = this.openWdb().update(TABLE_NAME, content, "id=?", new String[]{user.get_id().toString()});
         return affectedRows > 0;
     }
 
@@ -169,7 +165,6 @@ public class SQLHelper extends SQLiteOpenHelper {
         if (TextUtils.isEmpty(name)) {
             sql = "select id,name from user where 1=1";
             selectionArgs = null;
-
         } else {
             sql = "select id,name from user where 1=1 and name =?";
             selectionArgs = new String[]{name};
@@ -180,5 +175,6 @@ public class SQLHelper extends SQLiteOpenHelper {
             String name1 = cursor.getString(1);
             Log.d(TAG, "query-id:" + id + " name:" + name1);
         }
+        cursor.close();
     }
 }

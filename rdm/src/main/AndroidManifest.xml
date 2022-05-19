@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tequeno.rdm">
+    <!--
+        申请使用权限
+        需要先在清单文件中声明静态申请
+        有些权限还需要在代码编写时动态申请
+    -->
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <!-- 管理安装包权限 -->
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
+    <!-- 安装应用权限 -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
 
-    <!-- 申请使用权限 -->
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
 
     <application
         android:name=".MyApplication"
@@ -15,13 +28,39 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.app">
         <activity
+            android:name=".PermissionActivity"
+            android:exported="false" />
+
+        <provider
+            android:name=".UserContentProvider"
+            android:authorities="@string/rdm_user_content"
+            android:enabled="true"
+            android:exported="true" />
+
+        <!--
+        访问控制 将文件访问的形式从uri改为fileProvider
+        grantUriPermissions 必须设置为true 允许外部应用通过uri形式访问文件
+        -->
+        <provider
+            android:authorities="@string/rdm_file_provider"
+            android:name="androidx.core.content.FileProvider"
+            android:grantUriPermissions="true">
+
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths"/>
+        </provider>
+
+        <activity
             android:name=".ExternalFileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SQLiteDbActivity"
             android:exported="false" />
         <activity
             android:name=".SharedPrefsActivity"
             android:exported="false" />
         <activity
-            android:name=".SQLiteDbActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
