@@ -30,10 +30,9 @@
         - uni-app
         - Flutter
         - React Native
-    - SQLite 是app端内嵌的一段关系型数据库程序
 6. 项目目录结构
     1. app(代表模块)
-        - mainfests 只有一个AndroidManifest.xml文件 是模块运行的清单文件 配置
+        - manifests 只有一个AndroidManifest.xml文件 是模块运行的清单文件 配置
         - java 源代码包
         - res 资源文件包 包括布局 图片
             - drawable 图片文件
@@ -61,18 +60,6 @@
     - 使用16进制表示 8位或者6位
     - 透明度 + RGB色值  #FF00FF0000
     - xml默认透明度FF(完全不透明)  代码中设置默认透明度00(完全透明)
-## 生命周期
-1. onCreate
-2. onStart
-3. onResume
-4. onPause
-5. onStop
-6. onDestroy
-7. onRestart
-8. onNewIntent
-9. ![生命周期](./res/1651046332.jpg)
-10. ![生命周期](./res/1651113949.jpg)
-11. ![生命周期](./res/1651114110.jpg)
 ## 启动模式
 1. 静态设置 AndroidManifest.xml注册activity时可以设置 android:launchMode
     - standard  标准入栈出栈流程
@@ -87,6 +74,12 @@
     - FLAG_ACTIVITY_CLEAR_TASK   清空栈内所有活动再新建  需要配合 FLAG_ACTIVITY_NEW_TASK一起使用
 ## 四大组件
 1. Activity
+    1. ![生命周期](./res/1651046332.jpg)
+    2. ![生命周期](./res/1651113949.jpg)
+    3. ![生命周期](./res/1651114110.jpg)
+    4. Fragment
+       1. 依托于Activity
+       2. 有自己独立的生命周期
 2. Service
 3. BroadcastReceiver
 4. ContentProvider

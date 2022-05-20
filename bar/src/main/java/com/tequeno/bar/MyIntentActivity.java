@@ -17,10 +17,10 @@ public class MyIntentActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         Log.d(TAG, "onCreate");
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.my_intent);
+        setContentView(R.layout.activity_my_intent);
 
 
-        String u = "content://com.tequeno.rdm.UserContentProvider/vvswws";
+        String u = "content://com.tequeno.rdm.UserContentProvider";
         ContentResolver contentResolver = getContentResolver();
         Cursor cursor = contentResolver.query(Uri.parse(u), null, null, null, null);
         while (cursor.moveToNext()) {
