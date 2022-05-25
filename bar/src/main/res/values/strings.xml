@@ -10,6 +10,4 @@
     <string name="btn_pb2_text">开始结束</string>
     <string name="btn_notify1_text">测试通知</string>
     <string name="btn_notify2_text">取消通知</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

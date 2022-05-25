@@ -7,10 +7,12 @@
         package直接指定软件包名
         provider访问指定暴露的provider
         intent访问指定暴露的intent activity
-     -->
+    -->
     <queries>
-        <package android:name="com.tequeno.rdm"/>
-        <provider android:authorities="com.tequeno.rdm.UserContentProvider"
+        <package android:name="com.tequeno.rdm" />
+
+        <provider
+            android:authorities="com.tequeno.rdm.UserContentProvider"
             android:exported="false" />
     </queries>
 
@@ -21,8 +23,9 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Bar">
+
         <activity
-            android:name="com.tequeno.bar.MainActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +33,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <!--
         android:exported="true"允许外部应用调用
         intent-filter 可以自定义自己的action和category提供外部应用
@@ -38,18 +40,28 @@
         <activity
             android:name=".MyIntentActivity"
             android:exported="true">
-
             <intent-filter>
                 <action android:name="com.tequeno.bar.myintent" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
-
         </activity>
-
-        <activity android:name=".Intent1Activity" android:exported="false"/>
-        <activity android:name=".listview.ListViewActivity" android:exported="false"/>
-        <activity android:name=".viewpager.ViewPagerActivity" android:exported="false"/>
+        <activity
+            android:name=".Intent1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".listview.ListViewActivity"
+            android:exported="false" />
+        <activity
+            android:name=".viewpager.ViewPagerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fragment.FragmentActivity"
+            android:exported="false" />
+        <activity
+            android:name=".service.ServiceActivity"
+            android:exported="false" />
+        <service android:name=".service.MyService"/>
     </application>
 
 </manifest>

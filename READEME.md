@@ -80,7 +80,9 @@
     4. Fragment
        1. 依托于Activity
        2. 有自己独立的生命周期
+       3. ![生命周期](./res/1653298623.jpg)
 2. Service
+   1. ![生命周期](./res/1653463997.jpg)
 3. BroadcastReceiver
 4. ContentProvider
     - 为app存取内部数据提统一接口 方便不同应用之间的数据共享 跨进程通信
