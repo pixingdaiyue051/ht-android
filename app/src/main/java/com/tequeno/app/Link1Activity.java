@@ -13,7 +13,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Link1Activity extends AppCompatActivity {
 
-    private final String TAG = this.getClass().getSimpleName();
+    private final static String TAG = "Link1Activity";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

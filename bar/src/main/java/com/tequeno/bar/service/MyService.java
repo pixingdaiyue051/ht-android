@@ -10,6 +10,10 @@ import android.util.Log;
 
 import java.util.stream.IntStream;
 
+/**
+ * 单个线程处理:HandlerThread + Looper + Handler
+ * 线程池处理:Executors.newCachedThreadPool()
+ */
 public class MyService extends Service {
 
     private final static String TAG = "MyService";

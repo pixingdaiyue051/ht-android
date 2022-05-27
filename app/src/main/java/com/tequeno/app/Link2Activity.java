@@ -11,7 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class Link2Activity extends AppCompatActivity {
 
-    private final String TAG = this.getClass().getSimpleName();
+    private final static String TAG = "Link2Activity";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {

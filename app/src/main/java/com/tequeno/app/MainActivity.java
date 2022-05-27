@@ -1,5 +1,6 @@
 package com.tequeno.app;
 
+import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -14,7 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
  */
 public class MainActivity extends AppCompatActivity {
 
-    private final String TAG = this.getClass().getSimpleName();
+    private final static String TAG = "MainActivity";
 
     /**
      * 组件加载时首先被调用的方法
@@ -87,10 +88,10 @@ public class MainActivity extends AppCompatActivity {
 //            // 向需要跳转的意图传递数据
 //            intent.setData(Uri.parse("smsto:123456"));
 
-            Intent intent = new Intent();
             // 跳转到其他模块或者第三方模块的应用
-            intent.setAction("com.tequeno.bar.myintent");
-
+            Intent intent = new Intent("abc.fe.32.3gd");
+//            Intent intent = new Intent();
+//            intent.setComponent(new ComponentName("com.tequeno.bar", "com.tequeno.bar.MyIntentActivity"));
             startActivity(intent);
         });
     }

@@ -17,7 +17,7 @@ import androidx.appcompat.app.AppCompatActivity;
  */
 public class LoginActivity extends AppCompatActivity {
 
-    private final String TAG = this.getClass().getSimpleName();
+    private final static String TAG = "LoginActivity";
     private RadioGroup radioGroup;
     private View otpView;
     private View passwordView;

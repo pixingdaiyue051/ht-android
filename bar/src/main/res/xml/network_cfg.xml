@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <!-- 处于安全考虑android默认关闭http请求 需要manifest中开启 -->
+    <base-config cleartextTrafficPermitted="true" />
+</network-security-config>

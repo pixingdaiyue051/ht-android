@@ -10,4 +10,15 @@
     <string name="btn_pb2_text">开始结束</string>
     <string name="btn_notify1_text">测试通知</string>
     <string name="btn_notify2_text">取消通知</string>
+
+    <string name="text1">text66该gfd</string>
+    <string name="text2">text674hgf</string>
+
+
+    <string name="bar_user_content">com.tequeno.bar.usercontentprovider</string>
+    <string name="bar_file_provider">com.tequeno.bar.fileprovider</string>
+
+    <string name="export_name_myintent">com.tequeno.bar.myintent</string>
+    <string name="export_name_myreceiver">com.tequeno.bar.myreceiver</string>
+    <string name="export_name_mybackreceiver">com.tequeno.bar.mybackreceiver</string>
 </resources>

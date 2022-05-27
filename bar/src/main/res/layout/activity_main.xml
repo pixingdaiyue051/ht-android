@@ -5,40 +5,125 @@
     android:background="@color/bg_color"
     android:orientation="vertical">
 
-    <Button
-        android:id="@+id/btn_intent1"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="intent1"/>
+        android:layout_height="wrap_content">
 
-    <Button
-        android:id="@+id/btn_my_intent"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="myintent"/>
+        <Button
+            android:id="@+id/btn_intent1"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="intent1"/>
 
-    <Button
-        android:id="@+id/btn_list_view"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="listview"/>
+        <Button
+            android:id="@+id/btn_my_intent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="myintent"/>
 
-    <Button
-        android:id="@+id/btn_view_pager"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="viewpager"/>
+        <Button
+            android:id="@+id/btn_list_view"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="listview"/>
 
-    <Button
-        android:id="@+id/btn_fg"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="fragment"/>
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/btn_s"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="service"/>
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_view_pager"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="viewpager"/>
+
+        <Button
+            android:id="@+id/btn_fg"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="fragment"/>
+
+        <Button
+            android:id="@+id/btn_s"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="service"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_broadcast"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="broadcast"/>
+
+        <Button
+            android:id="@+id/btn_glide"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="glide"/>
+
+        <Button
+            android:id="@+id/btn_shared_prefs"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="sharedPrefs" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_sqlite"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="sqlite" />
+
+        <Button
+            android:id="@+id/btn_external_file"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="externalFile" />
+
+        <Button
+            android:id="@+id/btn_permission"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="permission" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_http"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="okhttp" />
+
+    </LinearLayout>
 
 </LinearLayout>

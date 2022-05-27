@@ -1,22 +1,50 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.tequeno.bar">
-
     <!--
-        出于安全考虑 Android 11之后的版本要求访问其他软件包需要先声明
+        出于安全考虑 Android 11之后的版本使用contentProvider访问其他软件包需要先声明
         package直接指定软件包名
         provider访问指定暴露的provider
         intent访问指定暴露的intent activity
     -->
-    <queries>
-        <package android:name="com.tequeno.rdm" />
+    <!--<queries>
+        <package android:name="com.tequeno.bar" />
 
         <provider
-            android:authorities="com.tequeno.rdm.UserContentProvider"
+            android:authorities="com.tequeno.bar.usercontentprovider"
             android:exported="false" />
-    </queries>
+    </queries>-->
+
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
+    <!-- 允许访问网络 -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <!-- 允许检测网络状况 -->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- 管理安装包权限 -->
+    <!--<uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />-->
+    <!-- 安装应用权限 -->
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+
+    <!-- 短信权限 -->
+    <uses-permission android:name="android.permission.READ_SMS" />
+    <uses-permission android:name="android.permission.SEND_SMS" />
+
+    <!-- 通信录权限 -->
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+
+    <!--允许程序访问WiFi网络信息-->
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <!--允许程序读写手机状态和身份-->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <!--允许程序访问CellID或WiFi热点来获取粗略的位置-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
     <application
+        android:name=".MyApplication"
+        android:networkSecurityConfig="@xml/network_cfg"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -41,7 +69,7 @@
             android:name=".MyIntentActivity"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.tequeno.bar.myintent" />
+                <action android:name="abc.fe.32.3gd" />
 
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
@@ -61,7 +89,59 @@
         <activity
             android:name=".service.ServiceActivity"
             android:exported="false" />
-        <service android:name=".service.MyService"/>
+        <activity
+            android:name=".broadcast.BroadcastActivity"
+            android:exported="false" />
+        <activity
+            android:name=".glide.GlideActivity"
+            android:exported="false" />
+        <activity
+            android:name=".provider.ExternalFileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".sp.SharedPrefsActivity"
+            android:exported="false" />
+        <activity
+            android:name=".sqlite.SQLiteDbActivity"
+            android:exported="false" />
+        <activity
+            android:name=".permission.PermissionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".okhttp.HttpActivity"
+            android:exported="false" />
+
+        <service android:name=".service.MyService" />
+
+        <receiver
+            android:name=".broadcast.MyReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="@string/export_name_myreceiver" />
+            </intent-filter>
+        </receiver>
+
+        <!-- 提供外部访问当前应用test.db user表的provider -->
+        <provider
+            android:name=".provider.UserContentProvider"
+            android:authorities="@string/bar_user_content"
+            android:enabled="true"
+            android:exported="true" />
+
+        <!--
+        访问控制 将文件访问的形式从uri改为fileProvider
+        grantUriPermissions 必须设置为true 允许外部应用通过uri形式访问文件
+        meta-data设置可以访问的路径
+        -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="@string/bar_file_provider"
+            android:grantUriPermissions="true">
+
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
     </application>
 
 </manifest>

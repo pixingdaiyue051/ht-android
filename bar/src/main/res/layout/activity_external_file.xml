@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_color"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/ed_src"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="保存" />
+
+    <Button
+        android:id="@+id/btn_read"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="读取" />
+
+    <Button
+        android:id="@+id/btn_install"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="安装外部应用" />
+
+    <Button
+        android:id="@+id/btn_read_pic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="读取系统图库" />
+
+    <Button
+        android:id="@+id/btn_media_store"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="media_store" />
+
+
+    <TextView
+        android:id="@+id/tv_show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <ImageView
+        android:id="@+id/img_show"
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:scaleType="fitCenter"
+        />
+
+    <GridLayout
+        android:id="@+id/gl_img"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:columnCount="3"
+        android:rowCount="3">
+
+        <ImageView
+            android:id="@+id/gl_img_0"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:layout_height="100dp"
+            android:scaleType="fitCenter"/>
+
+        <ImageView
+            android:id="@+id/gl_img_1"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:layout_height="100dp"
+            android:scaleType="fitCenter"/>
+
+        <ImageView
+            android:id="@+id/gl_img_2"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:layout_height="100dp"
+            android:scaleType="fitCenter"/>
+
+        <ImageView
+            android:id="@+id/gl_img_3"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:layout_height="100dp"
+            android:scaleType="fitCenter"/>
+
+        <ImageView
+            android:id="@+id/gl_img_4"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:layout_height="100dp"
+            android:scaleType="fitCenter"/>
+
+        <ImageView
+            android:id="@+id/gl_img_5"
+            android:layout_width="0dp"
+            android:layout_columnWeight="1"
+            android:layout_height="100dp"
+            android:scaleType="fitCenter"/>
+
+    </GridLayout>
+
+</LinearLayout>

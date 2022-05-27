@@ -17,7 +17,7 @@ import java.util.Locale;
 
 public class DateTimeActivity extends AppCompatActivity {
 
-    private final String TAG = this.getClass().getSimpleName();
+    private final static String TAG = "DateTimeActivity";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

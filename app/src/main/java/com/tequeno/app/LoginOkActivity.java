@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
  */
 public class LoginOkActivity extends AppCompatActivity {
 
-    private final String TAG = this.getClass().getSimpleName();
+    private final static String TAG = "LoginOkActivity";
 
     /**
      * 组件加载时首先被调用的方法

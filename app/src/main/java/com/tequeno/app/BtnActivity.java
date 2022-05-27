@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 
 public class BtnActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private final String TAG = this.getClass().getSimpleName();
+    private final static String TAG = "BtnActivity";
     private TextView tv;
     private TextView tvTest;
     private Button btnTest;

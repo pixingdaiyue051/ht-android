@@ -1,8 +1,0 @@
-<resources>
-    <string name="app_name">rdm</string>
-    <string name="text1">text1</string>
-    <string name="text2">text2</string>
-
-    <string name="rdm_user_content">com.tequeno.rdm.UserContentProvider</string>
-    <string name="rdm_file_provider">com.tequeno.rdm.fileProvider</string>
-</resources>

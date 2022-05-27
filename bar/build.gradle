@@ -7,12 +7,17 @@ android {
 
     defaultConfig {
         applicationId "com.tequeno.bar"
-        minSdk 24
+        minSdk 26
         targetSdk 31
         versionCode 1
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        // 引用高德地图.so
+        ndk {
+            abiFilters "armeabi-v7a"
+        }
     }
 
     buildTypes {
@@ -36,4 +41,31 @@ dependencies {
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    // glide
+    implementation 'com.github.bumptech.glide:glide:4.11.0'
+    // glide Generated API
+    annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+
+    // google guava
+//    implementation 'com.google.guava:guava:30.1.1-android'
+    // jiuguan api
+//    api 'com.jiuguan.family-call-api:2.7.7-SNAPSHOT'
+
+    // room
+    implementation 'androidx.room:room-runtime:2.4.2'
+    annotationProcessor 'androidx.room:room-compiler:2.4.2'
+
+    // 高德地图sdk
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //3D地图so及jar
+    implementation 'com.amap.api:3dmap:latest.integration'
+    //定位功能
+    implementation 'com.amap.api:location:latest.integration'
+    //搜索功能
+    implementation 'com.amap.api:search:latest.integration'
+
+    // OkHttp
+    implementation "com.squareup.okhttp3:okhttp:4.9.3"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.3"
 }

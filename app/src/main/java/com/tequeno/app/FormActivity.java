@@ -19,7 +19,7 @@ import androidx.appcompat.widget.SwitchCompat;
 
 public class FormActivity extends AppCompatActivity {
 
-    private final String TAG = this.getClass().getSimpleName();
+    private final static String TAG = "FormActivity";
 
     private TextView tv1;
     private TextView tv2;
