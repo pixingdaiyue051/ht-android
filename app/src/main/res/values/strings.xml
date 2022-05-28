@@ -3,8 +3,8 @@
     <string name="tv1_text">hello world</string>
     <string name="tv2_text">hello world hello world</string>
     <string name="tv3_text">test</string>
-    <string name="btn_next_text">显示意图跳转下一个activity</string>
-    <string name="btn_next_implicit_text">隐式意图跳转下一个activity</string>
+    <string name="btn_next_text">显示意图跳转activity</string>
+    <string name="btn_next_implicit_text">隐式意图跳转activity</string>
     <string name="btn_fake_login_text">模拟登录</string>
     <string name="btn_login_text">登录</string>
     <string name="btn_logout_text">退出</string>

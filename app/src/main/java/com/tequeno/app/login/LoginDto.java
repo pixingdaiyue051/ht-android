@@ -1,4 +1,4 @@
-package com.tequeno.app;
+package com.tequeno.app.login;
 
 public class LoginDto {
 

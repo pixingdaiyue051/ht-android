@@ -1,4 +1,4 @@
-package com.tequeno.app;
+package com.tequeno.app.form;
 
 import android.os.Bundle;
 import android.text.Editable;
@@ -16,6 +16,9 @@ import android.widget.TextView;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.SwitchCompat;
+
+import com.tequeno.app.MainUtil;
+import com.tequeno.app.R;
 
 public class FormActivity extends AppCompatActivity {
 

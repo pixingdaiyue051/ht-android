@@ -1,4 +1,4 @@
-package com.tequeno.app;
+package com.tequeno.app.form;
 
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
@@ -11,6 +11,8 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.tequeno.app.R;
 
 import java.util.Calendar;
 import java.util.Locale;

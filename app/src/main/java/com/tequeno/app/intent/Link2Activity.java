@@ -1,4 +1,4 @@
-package com.tequeno.app;
+package com.tequeno.app.intent;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -8,6 +8,8 @@ import android.widget.Button;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.tequeno.app.R;
 
 public class Link2Activity extends AppCompatActivity {
 

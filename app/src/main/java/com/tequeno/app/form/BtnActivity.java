@@ -1,4 +1,4 @@
-package com.tequeno.app;
+package com.tequeno.app.form;
 
 import android.os.Bundle;
 import android.util.Log;
@@ -7,6 +7,8 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.tequeno.app.R;
 
 import java.time.LocalDateTime;
 

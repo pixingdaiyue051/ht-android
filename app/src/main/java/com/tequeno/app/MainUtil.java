@@ -7,6 +7,7 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
+import com.tequeno.app.login.LoginDto;
 
 public final class MainUtil {
 

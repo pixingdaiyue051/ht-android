@@ -1,4 +1,4 @@
-package com.tequeno.app;
+package com.tequeno.app.login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -6,6 +6,8 @@ import android.util.Log;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.tequeno.app.R;
 
 /**
  * 继承 AppCompatActivity 可以自动解决一些兼容问题

@@ -1,4 +1,4 @@
-package com.tequeno.app;
+package com.tequeno.app.intent;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,6 +10,8 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.tequeno.app.R;
 
 public class Link1Activity extends AppCompatActivity {
 

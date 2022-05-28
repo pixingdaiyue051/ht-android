@@ -1,4 +1,4 @@
-# glide proguard
+# glide start
 -keep public class * implements com.bumptech.glide.module.GlideModule
 -keep class * extends com.bumptech.glide.module.AppGlideModule {
  <init>(...);
@@ -12,4 +12,5 @@
 }
 
 # for DexGuard only
--keepresourcexmlelements manifest/application/meta-data@value=GlideModule
+-keep resourcexmlelements manifest/application/meta-data@value=GlideModule
+# glide end

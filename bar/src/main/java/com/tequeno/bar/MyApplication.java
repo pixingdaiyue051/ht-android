@@ -56,6 +56,8 @@ public class MyApplication extends Application {
                 .build();
 
         mThreadPool = Executors.newCachedThreadPool();
+
+
     }
 
     public void asyncTask(Runnable r) {

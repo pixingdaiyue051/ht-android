@@ -1,8 +1,10 @@
-package com.tequeno.app;
+package com.tequeno.app.form;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.tequeno.app.R;
 
 public class ScrollActivity extends AppCompatActivity {
 

@@ -13,11 +13,6 @@ android {
         versionName "1.0"
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-
-        // 引用高德地图.so
-        ndk {
-            abiFilters "armeabi-v7a"
-        }
     }
 
     buildTypes {
@@ -55,15 +50,6 @@ dependencies {
     // room
     implementation 'androidx.room:room-runtime:2.4.2'
     annotationProcessor 'androidx.room:room-compiler:2.4.2'
-
-    // 高德地图sdk
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
-    //3D地图so及jar
-    implementation 'com.amap.api:3dmap:latest.integration'
-    //定位功能
-    implementation 'com.amap.api:location:latest.integration'
-    //搜索功能
-    implementation 'com.amap.api:search:latest.integration'
 
     // OkHttp
     implementation "com.squareup.okhttp3:okhttp:4.9.3"

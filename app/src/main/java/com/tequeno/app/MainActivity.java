@@ -1,6 +1,5 @@
 package com.tequeno.app;
 
-import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.content.pm.PackageManager;
@@ -9,6 +8,13 @@ import android.util.Log;
 import android.widget.Button;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.tequeno.app.form.BtnActivity;
+import com.tequeno.app.form.DateTimeActivity;
+import com.tequeno.app.form.FormActivity;
+import com.tequeno.app.form.ScrollActivity;
+import com.tequeno.app.intent.Link1Activity;
+import com.tequeno.app.login.LoginActivity;
 
 /**
  * 继承 AppCompatActivity 可以自动解决一些兼容问题

@@ -1,4 +1,4 @@
-package com.tequeno.app;
+package com.tequeno.app.login;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -11,6 +11,9 @@ import android.widget.EditText;
 import android.widget.RadioGroup;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.tequeno.app.MainUtil;
+import com.tequeno.app.R;
 
 /**
  * 继承 AppCompatActivity 可以自动解决一些兼容问题
