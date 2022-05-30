@@ -11,5 +11,6 @@
     <!-- 指定包含的域 -->
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">qinshitong.work</domain>
+        <domain includeSubdomains="true">jiansuotong.top</domain>
     </domain-config>
 </network-security-config>

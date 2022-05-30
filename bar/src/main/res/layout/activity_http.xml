@@ -5,15 +5,27 @@
     android:background="@color/bg_color"
     android:orientation="vertical">
 
-    <EditText
-        android:id="@+id/h_ed"
+    <TextView
+        android:id="@+id/h_tv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 
     <Button
-        android:id="@+id/btn_ok"
+        android:id="@+id/btn_cs"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ok"/>
+        android:text="cs"/>
+
+    <Button
+        android:id="@+id/btn_prod"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="prod"/>
+
+    <Button
+        android:id="@+id/btn_https"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="https"/>
 
 </LinearLayout>

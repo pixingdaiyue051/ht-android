@@ -31,6 +31,12 @@
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
 
+    <!--允许访问网络，必选权限-->
+    <uses-permission android:name="android.permission.INTERNET" />
+
+    <!--允许获取粗略位置，若用GPS实现定位小蓝点功能则必选-->
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+
     <application
         android:name=".MyApplication"
         android:networkSecurityConfig="@xml/cfg_network"
