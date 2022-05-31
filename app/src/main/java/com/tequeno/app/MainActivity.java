@@ -15,6 +15,7 @@ import com.tequeno.app.form.FormActivity;
 import com.tequeno.app.form.ScrollActivity;
 import com.tequeno.app.intent.Link1Activity;
 import com.tequeno.app.login.LoginActivity;
+import com.tequeno.app.map.MapActivity;
 
 /**
  * 继承 AppCompatActivity 可以自动解决一些兼容问题
@@ -50,6 +51,8 @@ public class MainActivity extends AppCompatActivity {
         form();
 
         datetime();
+
+        amap();
     }
 
     /**
@@ -173,6 +176,17 @@ public class MainActivity extends AppCompatActivity {
         Button btnScroll = findViewById(R.id.btn_datetime);
         btnScroll.setOnClickListener(view -> {
             Intent intent = new Intent(this, DateTimeActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    /**
+     * 高德地图
+     */
+    private void amap() {
+        Button btnAmap = findViewById(R.id.btn_amap);
+        btnAmap.setOnClickListener(view -> {
+            Intent intent = new Intent(this, MapActivity.class);
             startActivity(intent);
         });
     }

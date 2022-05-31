@@ -5,6 +5,9 @@
     <!--允许访问网络，必选权限-->
     <uses-permission android:name="android.permission.INTERNET" />
 
+    <!--gps定位-->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
     <!--允许获取粗略位置，若用GPS实现定位小蓝点功能则必选-->
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
 
@@ -34,6 +37,7 @@
 
     <application
         android:allowBackup="true"
+        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -70,6 +74,8 @@
         <activity android:name=".form.BtnActivity" android:exported="true"/>
         <activity android:name=".form.FormActivity"  android:exported="true"/>
         <activity android:name=".form.DateTimeActivity"  android:exported="true"/>
+
+        <service android:name=".map.MapLocationService"/>
     </application>
 
 </manifest>

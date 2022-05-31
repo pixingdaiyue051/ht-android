@@ -2,12 +2,18 @@ package com.tequeno.app;
 
 import android.app.Activity;
 import android.content.Context;
+import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
 import com.tequeno.app.login.LoginDto;
+
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
+import java.util.Locale;
 
 public final class MainUtil {
 
@@ -40,5 +46,34 @@ public final class MainUtil {
 
     public static void toast(Context context, String msg) {
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    /**
+     * 获取当前模式下的sha1
+     * @param context
+     * @return
+     */
+    public static String sha1(Context context){
+        try {
+            PackageInfo info = context.getPackageManager().getPackageInfo(
+                    context.getPackageName(), PackageManager.GET_SIGNATURES);
+            byte[] cert = info.signatures[0].toByteArray();
+            MessageDigest md = MessageDigest.getInstance("SHA1");
+            byte[] publicKey = md.digest(cert);
+            StringBuilder hexString = new StringBuilder();
+            for (int i = 0; i < publicKey.length; i++) {
+                String appendString = Integer.toHexString(0xFF & publicKey[i])
+                        .toUpperCase(Locale.US);
+                if (appendString.length() == 1)
+                    hexString.append("0");
+                hexString.append(appendString);
+                hexString.append(":");
+            }
+            String result = hexString.toString();
+            return result.substring(0, result.length()-1);
+        } catch (PackageManager.NameNotFoundException | NoSuchAlgorithmException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
