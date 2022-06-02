@@ -9,7 +9,6 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.tequeno.bar.broadcast.BroadcastActivity;
-import com.tequeno.bar.okhttp.HttpActivity;
 import com.tequeno.bar.provider.ExternalFileActivity;
 import com.tequeno.bar.fragment.FragmentActivity;
 import com.tequeno.bar.glide.GlideActivity;
@@ -51,12 +50,10 @@ public class MainActivity extends AppCompatActivity {
         Button btnSql = findViewById(R.id.btn_sqlite);
         Button btnFile = findViewById(R.id.btn_external_file);
         Button btnPermission = findViewById(R.id.btn_permission);
-        Button btnHttp = findViewById(R.id.btn_http);
         btnPrefs.setOnClickListener(this::prefs);
         btnSql.setOnClickListener(this::sql);
         btnFile.setOnClickListener(this::file);
         btnPermission.setOnClickListener(this::permission);
-        btnHttp.setOnClickListener(this::http);
     }
 
     private void intent1(View view) {
@@ -119,8 +116,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    private void http(View view) {
-        Intent intent = new Intent(this, HttpActivity.class);
-        startActivity(intent);
-    }
 }
