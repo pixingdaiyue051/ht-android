@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--
+<?xml version="1.0" encoding="utf-8"?><!--
     处于安全考虑android默认关闭http请求 只能使用https
     解决方案使用以下这段配置才可以正常发送http请求
     1.在AndroidManifest.xml application 节点加入 android:usesCleartextTraffic="true"
@@ -7,10 +6,11 @@
 -->
 <network-security-config>
     <!-- 允许全部域 -->
-    <!--<base-config cleartextTrafficPermitted="true" />-->
-    <!-- 指定包含的域 -->
+    <base-config cleartextTrafficPermitted="true" />
+    <!--&lt;!&ndash; 指定包含的域 &ndash;&gt;
     <domain-config cleartextTrafficPermitted="true">
         <domain includeSubdomains="true">qinshitong.work</domain>
         <domain includeSubdomains="true">jiansuotong.top</domain>
-    </domain-config>
+        <domain includeSubdomains="true">192.168.0.111</domain>
+    </domain-config>-->
 </network-security-config>

@@ -11,12 +11,15 @@ import androidx.annotation.Nullable;
 
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
+import com.tequeno.app.MyApplication;
 
+@Deprecated
 public class MapLocationService extends Service {
 
     private final static String TAG = "MapLocationService";
     private Handler handler;
     private HandlerThread thread;
+    private AMapLocationClient mLocationClient;
 
     public MapLocationService() {
         Log.d(TAG, TAG);
@@ -33,29 +36,30 @@ public class MapLocationService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
+        Log.d(TAG, "onStartCommand: ");
         handler.post(() -> {
 //在LocationService中启动定位
-            AMapLocationClient mLocationClient = new AMapLocationClient(this.getApplicationContext());
+            mLocationClient = new AMapLocationClient(this.getApplicationContext());
             AMapLocationClientOption mLocationOption = new AMapLocationClientOption();
 // 使用连续定位
             mLocationOption.setOnceLocation(false);
-// 每5s定位一次
-            mLocationOption.setInterval(5000L);
+// 定位时间间隔
+            mLocationOption.setInterval(10000L);
             mLocationClient.setLocationOption(mLocationOption);
-            mLocationClient.setLocationListener(aMapLocation -> {
-                double latitude = aMapLocation.getLatitude();
-                double longitude = aMapLocation.getLongitude();
-                Log.d(TAG, "onStartCommand: " + latitude + "-" + longitude);
-            });
+            mLocationClient.setLocationListener(aMapLocation -> Log.d(TAG, "locating: " + System.currentTimeMillis() + "--" + aMapLocation.getLatitude()));
             mLocationClient.startLocation();
         });
+        MyApplication.getInstance().isLocateServiceRunning = true;
         return START_NOT_STICKY;
     }
 
     @Override
     public void onDestroy() {
+        Log.d(TAG, "onDestroy: ");
         super.onDestroy();
+        mLocationClient.stopLocation();
         thread.quitSafely();
+        MyApplication.getInstance().isLocateServiceRunning = false;
     }
 
     @Nullable

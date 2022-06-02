@@ -9,10 +9,10 @@ import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
-import com.tequeno.app.login.LoginDto;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
+import java.time.LocalDate;
 import java.util.Locale;
 
 public final class MainUtil {
@@ -40,8 +40,8 @@ public final class MainUtil {
         imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
     }
 
-    public static String toJsonString(String uname, String pwd) {
-        return new Gson().toJson(new LoginDto().setUname(uname).setPassword(pwd));
+    public static String toJsonString(Object obj) {
+        return new Gson().toJson(obj);
     }
 
     public static void toast(Context context, String msg) {
@@ -50,10 +50,11 @@ public final class MainUtil {
 
     /**
      * 获取当前模式下的sha1
+     *
      * @param context
      * @return
      */
-    public static String sha1(Context context){
+    public static String sha1(Context context) {
         try {
             PackageInfo info = context.getPackageManager().getPackageInfo(
                     context.getPackageName(), PackageManager.GET_SIGNATURES);
@@ -70,10 +71,14 @@ public final class MainUtil {
                 hexString.append(":");
             }
             String result = hexString.toString();
-            return result.substring(0, result.length()-1);
+            return result.substring(0, result.length() - 1);
         } catch (PackageManager.NameNotFoundException | NoSuchAlgorithmException e) {
             e.printStackTrace();
         }
         return null;
+    }
+
+    public static String day() {
+        return LocalDate.now().toString();
     }
 }

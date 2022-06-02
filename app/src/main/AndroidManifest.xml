@@ -36,10 +36,11 @@
     <uses-permission android:name="android.permission.INTERNET" />
 
     <application
+        android:name=".MyApplication"
         android:allowBackup="true"
-        android:usesCleartextTraffic="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/cfg_network"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.app">
@@ -47,7 +48,12 @@
         <!-- 高德地图key -->
         <meta-data
             android:name="com.amap.api.v2.apikey"
-            android:value="14eb7d46a6e128cbd4c1ecc77a202724"/>
+            android:value="14eb7d46a6e128cbd4c1ecc77a202724" />
+
+        <!-- 定位需要的官方service -->
+        <service android:name="com.amap.api.location.APSService" />
+        <!-- 自定义定位服务service 该策略已被放弃 改为使用守护线程持续读取坐标点数据 -->
+        <service android:name=".map.MapLocationService" />
 
         <activity
             android:name=".MainActivity"
@@ -58,24 +64,49 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
 
-            <meta-data android:name="sdk.p1" android:value="ddk_001" />
-            <meta-data android:name="sdk.p2" android:value="ddk_002" />
+            <meta-data
+                android:name="sdk.p1"
+                android:value="ddk_001" />
+            <meta-data
+                android:name="sdk.p2"
+                android:value="ddk_002" />
 
             <!-- 快捷方式 -->
-            <meta-data android:name="android.app.shortcuts" android:resource="@xml/shortcuts"/>
+            <meta-data
+                android:name="android.app.shortcuts"
+                android:resource="@xml/shortcuts" />
         </activity>
 
-        <activity android:name=".intent.Link1Activity" android:exported="false" />
-        <activity android:name=".intent.Link2Activity" android:exported="false"/>
-        <activity android:name=".login.LoginActivity" android:exported="false" />
-        <activity android:name=".login.LoginOkActivity" android:exported="false" />
-        <activity android:name=".form.ScrollActivity" android:exported="false" />
-        <activity android:name=".map.MapActivity" android:exported="false" />
-        <activity android:name=".form.BtnActivity" android:exported="true"/>
-        <activity android:name=".form.FormActivity"  android:exported="true"/>
-        <activity android:name=".form.DateTimeActivity"  android:exported="true"/>
-
-        <service android:name=".map.MapLocationService"/>
+        <activity
+            android:name=".intent.Link1Activity"
+            android:exported="false" />
+        <activity
+            android:name=".intent.Link2Activity"
+            android:exported="false" />
+        <activity
+            android:name=".login.LoginActivity"
+            android:exported="false" />
+        <activity
+            android:name=".login.LoginOkActivity"
+            android:exported="false" />
+        <activity
+            android:name=".form.ScrollActivity"
+            android:exported="false" />
+        <activity
+            android:name=".okhttp.HttpActivity"
+            android:exported="false" />
+        <activity
+            android:name=".map.MapActivity"
+            android:exported="false" />
+        <activity
+            android:name=".form.BtnActivity"
+            android:exported="true" />
+        <activity
+            android:name=".form.FormActivity"
+            android:exported="true" />
+        <activity
+            android:name=".form.DateTimeActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

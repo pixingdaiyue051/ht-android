@@ -13,16 +13,16 @@
         <Button
             android:id="@+id/btn_next"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="@string/btn_next_text"/>
+            android:layout_weight="1"
+            android:text="@string/btn_next_text" />
 
         <Button
             android:id="@+id/btn_next_implicit"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="@string/btn_next_implicit_text"/>
+            android:layout_weight="1"
+            android:text="@string/btn_next_implicit_text" />
     </LinearLayout>
 
     <LinearLayout
@@ -32,23 +32,23 @@
         <Button
             android:id="@+id/btn_fake_login"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="@string/btn_fake_login_text"/>
+            android:layout_weight="1"
+            android:text="@string/btn_fake_login_text" />
 
         <Button
             android:id="@+id/btn_meta_data"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="@string/btn_meta_data_text"/>
+            android:layout_weight="1"
+            android:text="@string/btn_meta_data_text" />
 
         <Button
             android:id="@+id/btn_scroll"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="@string/btn_scroll_text"/>
+            android:layout_weight="1"
+            android:text="@string/btn_scroll_text" />
 
     </LinearLayout>
 
@@ -59,23 +59,23 @@
         <Button
             android:id="@+id/btn_btn"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="@string/btn_btn_text"/>
+            android:layout_weight="1"
+            android:text="@string/btn_btn_text" />
 
         <Button
             android:id="@+id/btn_form"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="@string/btn_form_text"/>
+            android:layout_weight="1"
+            android:text="@string/btn_form_text" />
 
         <Button
             android:id="@+id/btn_datetime"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="@string/btn_datetime_text"/>
+            android:layout_weight="1"
+            android:text="@string/btn_datetime_text" />
 
     </LinearLayout>
 
@@ -86,9 +86,16 @@
         <Button
             android:id="@+id/btn_amap"
             android:layout_width="0dp"
-            android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="高德地图"/>
+            android:layout_weight="1"
+            android:text="高德地图" />
+
+        <Button
+            android:id="@+id/btn_http"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="okhttp" />
 
     </LinearLayout>
 

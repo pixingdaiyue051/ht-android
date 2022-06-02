@@ -2,30 +2,24 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_color"
+    android:background="@color/layout_bg"
     android:orientation="vertical">
 
     <TextView
         android:id="@+id/h_tv"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="wrap_content" />
 
     <Button
-        android:id="@+id/btn_cs"
+        android:id="@+id/btn_http"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="cs"/>
-
-    <Button
-        android:id="@+id/btn_prod"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="prod"/>
+        android:text="http" />
 
     <Button
         android:id="@+id/btn_https"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="https"/>
+        android:text="https" />
 
 </LinearLayout>

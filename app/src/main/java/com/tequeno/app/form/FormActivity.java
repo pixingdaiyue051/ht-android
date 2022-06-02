@@ -19,6 +19,7 @@ import androidx.appcompat.widget.SwitchCompat;
 
 import com.tequeno.app.MainUtil;
 import com.tequeno.app.R;
+import com.tequeno.app.login.LoginDto;
 
 public class FormActivity extends AppCompatActivity {
 
@@ -89,8 +90,12 @@ public class FormActivity extends AppCompatActivity {
                 MainUtil.toast(this, "请输入密码");
                 return;
             }
-            Log.d(TAG, String.format("输入内容 %s", MainUtil.toJsonString(uname, pwd)));
-            MainUtil.toast(this, String.format("输入内容 %s", MainUtil.toJsonString(uname, pwd)));
+            LoginDto dto = new LoginDto();
+            dto.username = uname;
+            dto.password = pwd;
+            String json = MainUtil.toJsonString(dto);
+            Log.d(TAG, String.format("输入内容 %s", json));
+            MainUtil.toast(this, String.format("输入内容 %s", json));
         });
 
         // 对话框

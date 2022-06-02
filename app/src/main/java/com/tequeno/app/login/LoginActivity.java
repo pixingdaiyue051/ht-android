@@ -1,6 +1,5 @@
 package com.tequeno.app.login;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -75,9 +74,9 @@ public class LoginActivity extends AppCompatActivity {
      */
     private boolean isCorrectPhone() {
         String text = formPhone.getText().toString();
-        boolean checked = !TextUtils.isEmpty(text) && text.length() == 11;
+        boolean checked = !TextUtils.isEmpty(text);
         if (!checked) {
-            MainUtil.toast(this, "请输入11位手机号");
+            MainUtil.toast(this, "请输入手机号");
         }
         return checked;
     }
@@ -105,9 +104,9 @@ public class LoginActivity extends AppCompatActivity {
      */
     private boolean isCorrectPassword() {
         String text = formPassword.getText().toString();
-        boolean checked = !TextUtils.isEmpty(text) && text.length() == 8;
+        boolean checked = !TextUtils.isEmpty(text);
         if (!checked) {
-            MainUtil.toast(this, "请输入8位密码");
+            MainUtil.toast(this, "请输入密码");
         }
         return checked;
     }
@@ -146,7 +145,8 @@ public class LoginActivity extends AppCompatActivity {
      * @param view
      */
     private void requireOtp(View view) {
-        if (this.isCorrectPhone()) {
+        if (!this.isCorrectPhone()) {
+            return;
         }
     }
 
@@ -169,24 +169,38 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
         String phone = formPhone.getText().toString();
-        LoginDto loginDto = new LoginDto().setPhone(phone);
+        LoginDto loginDto = new LoginDto();
         if (this.isOtpLogin()) {
             if (!this.isCorrectOtp()) {
                 return;
             }
-            String otp = formOtp.getText().toString();
-            loginDto.setOtp(otp);
+            loginDto.phone = phone;
+            loginDto.otp = formOtp.getText().toString();
         } else {
             if (!this.isCorrectPassword()) {
                 return;
             }
-            String password = formPassword.getText().toString();
-            loginDto.setPassword(password);
+            loginDto.username = phone;
+            loginDto.password = formPassword.getText().toString();
         }
         // TODO 请求后台 验证登录信息 获取登录成功token 判断是否需要保存密码
-        Intent intent = new Intent(this, LoginOkActivity.class);
-        // 登录之后 清空栈再跳转 之后就不会再跳转会登录页面了
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
-        startActivity(intent);
+
+//        String url = "http://qinshitong.work:8081/middle/user/login";
+//        String url1 = "http://qinshitong.work:8081/middle/user/list";
+//        HttpClientWrapper util = HttpClientWrapper.getInstance();
+//        util.postAsync(url, MainUtil.toJsonString(loginDto), msg -> {
+//            Type type = new TypeToken<ResponseWrapper<LoginResDto>>() {
+//            }.getType();
+//            ResponseWrapper<LoginResDto> wrapper = new Gson().fromJson(msg, type);
+//            util.header("sign", wrapper.data.sign);
+//            util.post(url1, "{}", msg1 -> {
+//
+//            });
+//        });
+
+//        Intent intent = new Intent(this, LoginOkActivity.class);
+//        // 登录之后 清空栈再跳转 之后就不会再跳转会登录页面了
+//        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+//        startActivity(intent);
     }
 }

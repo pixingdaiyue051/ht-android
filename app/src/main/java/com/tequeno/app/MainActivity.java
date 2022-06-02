@@ -16,6 +16,7 @@ import com.tequeno.app.form.ScrollActivity;
 import com.tequeno.app.intent.Link1Activity;
 import com.tequeno.app.login.LoginActivity;
 import com.tequeno.app.map.MapActivity;
+import com.tequeno.app.okhttp.HttpActivity;
 
 /**
  * 继承 AppCompatActivity 可以自动解决一些兼容问题
@@ -53,6 +54,8 @@ public class MainActivity extends AppCompatActivity {
         datetime();
 
         amap();
+
+        okhttp();
     }
 
     /**
@@ -187,6 +190,17 @@ public class MainActivity extends AppCompatActivity {
         Button btnAmap = findViewById(R.id.btn_amap);
         btnAmap.setOnClickListener(view -> {
             Intent intent = new Intent(this, MapActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    /**
+     * okhttp
+     */
+    private void okhttp() {
+        Button btnHttp = findViewById(R.id.btn_http);
+        btnHttp.setOnClickListener(view -> {
+            Intent intent = new Intent(this, HttpActivity.class);
             startActivity(intent);
         });
     }

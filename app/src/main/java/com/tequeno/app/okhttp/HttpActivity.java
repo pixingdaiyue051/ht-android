@@ -1,4 +1,4 @@
-package com.tequeno.bar.okhttp;
+package com.tequeno.app.okhttp;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -9,7 +9,10 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.tequeno.bar.R;
+import com.tequeno.app.R;
+import com.tequeno.app.login.LoginResDto;
+import com.tequeno.app.login.PageResDto;
+import com.tequeno.app.login.UserResDto;
 
 /**
  * 发送http请求必须是非主线程 修改ui必须使用主线程
@@ -18,7 +21,7 @@ import com.tequeno.bar.R;
 public class HttpActivity extends AppCompatActivity {
 
     private final static String TAG = "HttpActivity";
-    private HttpUtil httpUtil;
+    private HttpClientWrapper http;
     private TextView tv;
     private Handler handler;
 
@@ -29,40 +32,32 @@ public class HttpActivity extends AppCompatActivity {
         setContentView(R.layout.activity_http);
 
         tv = findViewById(R.id.h_tv);
-        Button btnCs = findViewById(R.id.btn_cs);
-        Button btnProd = findViewById(R.id.btn_prod);
+        Button btnHttp = findViewById(R.id.btn_http);
         Button btnHttps = findViewById(R.id.btn_https);
 
-        btnCs.setOnClickListener(this::cs);
-        btnProd.setOnClickListener(this::prod);
+        btnHttp.setOnClickListener(this::http);
         btnHttps.setOnClickListener(this::https);
 
-        httpUtil = HttpUtil.getInstance();
+        http = HttpClientWrapper.getInstance();
         handler = new Handler();
     }
 
-    private void cs(View view) {
-        String url = "http://qinshitong.work:8082/server/demo/time";
+    private void http(View view) {
+        String url = "https://qinshitong.work/middle/user/login";
+        String url1 = "https://qinshitong.work/middle/user/list";
 
-//        httpUtil.get(url, msg -> Log.d(TAG, "ok: " + msg));
-
-        httpUtil.post(url, msg -> {
-            Log.d(TAG, "cs: " + msg);
-            handler.post(() -> tv.setText(msg));
-        });
-    }
-
-    private void prod(View view) {
-        String url = "http://jiansuotong.top:8888/nmgjb/demo/time";
-        httpUtil.get(url, msg -> {
-            Log.d(TAG, "prod: " + msg);
-            handler.post(() -> tv.setText(msg));
+        http.<LoginResDto>postAsync(url, "{\"password\": \"123456\",\"username\": \"jh\"}", LoginResDto.TAG, dto -> {
+            http.header("sign", dto.sign);
+            http.<PageResDto<UserResDto>>post(url1, "{}", UserResDto.TAG_PAGE, pageDto -> {
+                Log.d(TAG, "http: " + pageDto.count);
+            });
+            handler.post(() -> tv.setText(dto.sign));
         });
     }
 
     private void https(View view) {
-        String url = "https://jiansuotong.top/app/demo/one";
-        httpUtil.get(url, msg -> {
+        String url = "https://qinshitong.work/v2/demo/log";
+        http.getAsync(url, msg -> {
             Log.d(TAG, "prod: " + msg);
             handler.post(() -> tv.setText(msg));
         });
