@@ -45,35 +45,6 @@ public class HttpClientWrapper {
         reqBuilder.header(name, value);
     }
 
-    public void get(String url, Consumer<String> consumer) {
-        Request request = reqBuilder
-                .url(url)
-                .build();
-        try (Response response = client.newCall(request).execute()) {
-            if (!response.isSuccessful()) {
-                Log.e(TAG, "get: response isSuccessful false");
-                return;
-            }
-            ResponseBody body = response.body();
-            if (null == body) {
-                Log.e(TAG, "get: body is null");
-                return;
-            }
-            String res = body.string();
-            Log.d(TAG, "get: " + res);
-            if (null != consumer) {
-                consumer.accept(res);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-            Log.e(TAG, "get: ", e);
-        }
-    }
-
-    public void getAsync(String url, Consumer<String> consumer) {
-        MyApplication.getInstance().asyncTask(() -> get(url, consumer));
-    }
-
     public <T> void post(String url, String json, String typeKey, Consumer<T> consumer) {
         RequestBody requestBody = RequestBody.create(json, mediaTypeJson);
         Request request = reqBuilder
@@ -93,14 +64,14 @@ public class HttpClientWrapper {
             String res = responseBody.string();
             Log.d(TAG, "post: " + res);
 
-            ResponseWrapper res1 = GsonWrapper.getInstance().fromJson(res, typeKey);
+            ResponseWrapper<T> res1 = GsonWrapper.getInstance().fromJson(res, typeKey);
 
             if (0 != res1.code) {
                 Log.e(TAG, "post: " + res1.msg);
                 return;
             }
             if (null != consumer) {
-                consumer.accept((T) res1.data);
+                consumer.accept(res1.data);
             }
         } catch (Exception e) {
             e.printStackTrace();

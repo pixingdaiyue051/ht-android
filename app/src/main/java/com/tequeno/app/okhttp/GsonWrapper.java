@@ -21,6 +21,8 @@ public class GsonWrapper {
         GsonWrapper util = new GsonWrapper();
         util.gson = new GsonBuilder().setPrettyPrinting().create();
         util.map = new HashMap<>();
+        util.map.put(ResponseWrapper.TAG, new TypeToken<ResponseWrapper<Boolean>>() {
+        });
         util.map.put(LoginResDto.TAG, new TypeToken<ResponseWrapper<LoginResDto>>() {
         });
         util.map.put(UserResDto.TAG, new TypeToken<ResponseWrapper<UserResDto>>() {

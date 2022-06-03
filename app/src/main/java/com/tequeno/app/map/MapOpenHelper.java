@@ -153,7 +153,7 @@ public class MapOpenHelper extends SQLiteOpenHelper {
     }
 
     public List<LatLng> query(String target, int listSize) {
-        String[] columns = new String[]{Map.Table.COLUMN_ID, Map.Table.COLUMN_TARGET, Map.Table.COLUMN_LONGITUDE, Map.Table.COLUMN_LATITUDE};
+        String[] columns = new String[]{Map.Table.COLUMN_ID, Map.Table.COLUMN_LONGITUDE, Map.Table.COLUMN_LATITUDE};
         String where = String.format("%s = ?", Map.Table.COLUMN_TARGET);
         String[] args = new String[]{target};
         Cursor cursor = this.openRdb().query(Map.Table.TABLE_NAME, columns, where, args, null, null, Map.Table.COLUMN_CREATE_TIME);
@@ -162,14 +162,16 @@ public class MapOpenHelper extends SQLiteOpenHelper {
 //                Map.Table.TABLE_NAME, Map.Table.COLUMN_TARGET, Map.Table.COLUMN_CREATE_TIME);
 //        String[] args = new String[]{target};
 //        Cursor cursor = this.openRdb().rawQuery(sql, args);
+        if (null == cursor || cursor.isClosed()) {
+            return null;
+        }
         List<LatLng> pointList = new ArrayList<>(listSize);
 
         while (cursor.moveToNext()) {
             long _id1 = cursor.getLong(0);
-            String target1 = cursor.getString(1);
-            double longitude1 = cursor.getDouble(2);
-            double latitude1 = cursor.getDouble(3);
-            Log.d(TAG, "query:" + _id1 + target1 + longitude1 + latitude1);
+            double longitude1 = cursor.getDouble(1);
+            double latitude1 = cursor.getDouble(2);
+            Log.d(TAG, "query:" + _id1 + target + longitude1 + latitude1);
             pointList.add(new LatLng(latitude1, longitude1));
         }
         cursor.close();

@@ -1,6 +1,8 @@
 package com.tequeno.app.map;
 
+import android.graphics.Color;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.PersistableBundle;
 import android.text.TextUtils;
 import android.util.Log;
@@ -22,7 +24,13 @@ import com.amap.api.maps.model.PolylineOptions;
 import com.tequeno.app.MainUtil;
 import com.tequeno.app.MyApplication;
 import com.tequeno.app.R;
+import com.tequeno.app.okhttp.GsonWrapper;
 
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Paths;
+import java.nio.file.StandardOpenOption;
 import java.util.List;
 
 public class MapActivity extends AppCompatActivity {
@@ -31,6 +39,7 @@ public class MapActivity extends AppCompatActivity {
     private MapView mapView;
     private AMap aMap;
     private EditText et;
+    private EditText etDay;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +50,7 @@ public class MapActivity extends AppCompatActivity {
 //        myLocationStyle();
 
         et = findViewById(R.id.et_point_num);
+        etDay = findViewById(R.id.et_day);
 
         Button btnStart = findViewById(R.id.btn_start_locate);
         btnStart.setOnClickListener(view -> MyApplication.getInstance().startLocate());
@@ -106,10 +116,28 @@ public class MapActivity extends AppCompatActivity {
         if (!TextUtils.isEmpty(text)) {
             listSize = Integer.parseInt(text);
         }
-        List<LatLng> list = MapOpenHelper.getInstance(this).query(MainUtil.day(), listSize);
+        String textDay = etDay.getText().toString();
+        if (TextUtils.isEmpty(textDay)) {
+            textDay = MainUtil.day();
+        }
+        List<LatLng> list = MapOpenHelper.getInstance(this).query(textDay, listSize);
+        if (null == list || list.isEmpty()) {
+            return;
+        }
 
-        aMap.addPolyline(new PolylineOptions().
-                addAll(list).width(MainUtil.dip2Px(this, 5)).color(R.color.poly_line_colorful));
+        String dir = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS) + "/" + textDay + ".txt";
+
+        try (FileChannel fileChannel = FileChannel.open(Paths.get(dir), StandardOpenOption.CREATE, StandardOpenOption.WRITE)) {
+            ByteBuffer wrap = ByteBuffer.wrap(GsonWrapper.getInstance().toJson(list).getBytes(StandardCharsets.UTF_8));
+            fileChannel.write(wrap);
+            wrap.clear();
+        } catch (Exception e) {
+            Log.e(TAG, "save: error", e);
+        }
+
+        PolylineOptions polylineOptions = new PolylineOptions();
+        polylineOptions.setPoints(list);
+        aMap.addPolyline(polylineOptions.width(MainUtil.dip2Px(this, 2)).color(Color.parseColor("#BA144D")));
     }
 
     @Override

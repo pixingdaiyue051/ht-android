@@ -30,20 +30,28 @@ public class MyApplication extends Application {
     public final static String DB_NAME = "tequeno.db";
 
     private static MyApplication mApp;
-    private Intent mapLocationIntent;
+    private ExecutorService mThreadPool;
+    private Handler mHandler;
+
+    // *** alarm receiver service实现地图定位 已废弃
+    @Deprecated
     private LocalBroadcastManager broadcastManager;
+    @Deprecated
     private MapLocationReceiver mapLocationReceiver;
+    @Deprecated
     private PendingIntent pendingIntent;
+    @Deprecated
     private AlarmManager alarmManager;
+    @Deprecated
     public boolean isLocateServiceRunning;
-    private AMapLocationClient mLocationClient;
-    private HandlerThread mapThread;
+
+    // *** 异步守护线程实现持续定位
+    private AMapLocationClient mapLocationClient;
+    private HandlerThread mapLocationThread;
 
     public static MyApplication getInstance() {
         return mApp;
     }
-
-    private ExecutorService mThreadPool;
 
     /**
      * app启动时调用
@@ -54,10 +62,26 @@ public class MyApplication extends Application {
         super.onCreate();
         mApp = this;
         mThreadPool = Executors.newCachedThreadPool();
+        mHandler = new Handler(getMainLooper());
     }
 
+    /**
+     * 执行一个异步任务
+     *
+     * @param r
+     */
     public void asyncTask(Runnable r) {
         mThreadPool.execute(r);
+    }
+
+    /**
+     * 往主线程队列添加任务
+     *
+     * @param r
+     * @param delay
+     */
+    public void postMsg(Runnable r, long delay) {
+        mHandler.postDelayed(r, delay);
     }
 
     /**
@@ -91,27 +115,27 @@ public class MyApplication extends Application {
 
         String target = MainUtil.day();
         String mapThreadName = "thread-map-location-1";
-        mapThread = new HandlerThread(mapThreadName);
-        mapThread.setDaemon(true);
-        mapThread.start();
-        Handler handler = new Handler(mapThread.getLooper());
+        mapLocationThread = new HandlerThread(mapThreadName);
+        mapLocationThread.setDaemon(true);
+        mapLocationThread.start();
+        Handler handler = new Handler(mapLocationThread.getLooper());
         handler.post(() -> {
-            mLocationClient = new AMapLocationClient(mApp);
+            mapLocationClient = new AMapLocationClient(mApp);
             AMapLocationClientOption mLocationOption = new AMapLocationClientOption();
 // 使用连续定位
             mLocationOption.setOnceLocation(false);
 // 定位时间间隔
             mLocationOption.setInterval(3000L);
-            mLocationClient.setLocationOption(mLocationOption);
+            mapLocationClient.setLocationOption(mLocationOption);
             Map map = new Map();
             map.target = target;
-            mLocationClient.setLocationListener(aMapLocation -> {
+            mapLocationClient.setLocationListener(aMapLocation -> {
                 Log.d(TAG, "locating: " + System.currentTimeMillis() + "--" + aMapLocation);
                 map.longitude = aMapLocation.getLongitude();
                 map.latitude = aMapLocation.getLatitude();
                 MapOpenHelper.getInstance(mApp).insert(map);
             });
-            mLocationClient.startLocation();
+            mapLocationClient.startLocation();
         });
     }
 
@@ -123,11 +147,11 @@ public class MyApplication extends Application {
 //        alarmManager.cancel(pendingIntent);
 //        broadcastManager.unregisterReceiver(mapLocationReceiver);
 //        isLocateServiceRunning = false;
-        if (null != mLocationClient) {
-            mLocationClient.stopLocation();
+        if (null != mapLocationClient) {
+            mapLocationClient.stopLocation();
         }
-        if (null != mapThread && mapThread.isAlive()) {
-            mapThread.quitSafely();
+        if (null != mapLocationThread && mapLocationThread.isAlive()) {
+            mapLocationThread.quitSafely();
         }
         MapOpenHelper.getInstance(mApp).closeWdb();
     }

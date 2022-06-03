@@ -1,7 +1,6 @@
 package com.tequeno.app.okhttp;
 
 import android.os.Bundle;
-import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
@@ -9,6 +8,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.tequeno.app.MyApplication;
 import com.tequeno.app.R;
 import com.tequeno.app.login.LoginResDto;
 import com.tequeno.app.login.PageResDto;
@@ -23,7 +23,6 @@ public class HttpActivity extends AppCompatActivity {
     private final static String TAG = "HttpActivity";
     private HttpClientWrapper http;
     private TextView tv;
-    private Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +38,6 @@ public class HttpActivity extends AppCompatActivity {
         btnHttps.setOnClickListener(this::https);
 
         http = HttpClientWrapper.getInstance();
-        handler = new Handler();
     }
 
     private void http(View view) {
@@ -51,15 +49,15 @@ public class HttpActivity extends AppCompatActivity {
             http.<PageResDto<UserResDto>>post(url1, "{}", UserResDto.TAG_PAGE, pageDto -> {
                 Log.d(TAG, "http: " + pageDto.count);
             });
-            handler.post(() -> tv.setText(dto.sign));
+            MyApplication.getInstance().postMsg(() -> tv.setText(dto.sign), 0);
         });
     }
 
     private void https(View view) {
         String url = "https://qinshitong.work/v2/demo/log";
-        http.getAsync(url, msg -> {
+        http.<Boolean>postAsync(url, "", ResponseWrapper.TAG, msg -> {
             Log.d(TAG, "prod: " + msg);
-            handler.post(() -> tv.setText(msg));
+            MyApplication.getInstance().postMsg(() -> tv.setText(String.valueOf(msg)), 0);
         });
     }
 }
