@@ -9,15 +9,17 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.tequeno.bar.broadcast.BroadcastActivity;
-import com.tequeno.bar.provider.ExternalFileActivity;
 import com.tequeno.bar.fragment.FragmentActivity;
 import com.tequeno.bar.glide.GlideActivity;
-import com.tequeno.bar.listview.ListViewActivity;
+import com.tequeno.bar.fancyview.GridViewActivity;
+import com.tequeno.bar.fancyview.ListViewActivity;
 import com.tequeno.bar.permission.PermissionActivity;
+import com.tequeno.bar.provider.ExternalFileActivity;
 import com.tequeno.bar.service.ServiceActivity;
 import com.tequeno.bar.sp.SharedPrefsActivity;
+import com.tequeno.bar.fancyview.SpinnerActivity;
 import com.tequeno.bar.sqlite.SQLiteDbActivity;
-import com.tequeno.bar.viewpager.ViewPagerActivity;
+import com.tequeno.bar.fancyview.ViewPagerActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,30 +32,33 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button btn1 = findViewById(R.id.btn_intent1);
-        Button btnMyIntent = findViewById(R.id.btn_my_intent);
-        Button btnListView = findViewById(R.id.btn_list_view);
-        Button btnViewPager = findViewById(R.id.btn_view_pager);
-        Button btnFg = findViewById(R.id.btn_fg);
-        Button btnS = findViewById(R.id.btn_s);
-        Button btnBroadcast = findViewById(R.id.btn_broadcast);
-        Button btnGlide = findViewById(R.id.btn_glide);
         btn1.setOnClickListener(this::intent1);
+        Button btnMyIntent = findViewById(R.id.btn_my_intent);
         btnMyIntent.setOnClickListener(this::myIntent);
+        Button btnListView = findViewById(R.id.btn_list_view);
         btnListView.setOnClickListener(this::listView);
+        Button btnViewPager = findViewById(R.id.btn_view_pager);
         btnViewPager.setOnClickListener(this::viewPager);
+        Button btnFg = findViewById(R.id.btn_fg);
         btnFg.setOnClickListener(this::fg);
+        Button btnS = findViewById(R.id.btn_s);
         btnS.setOnClickListener(this::service);
+        Button btnBroadcast = findViewById(R.id.btn_broadcast);
         btnBroadcast.setOnClickListener(this::broadcast);
+        Button btnGlide = findViewById(R.id.btn_glide);
         btnGlide.setOnClickListener(this::glide);
-
         Button btnPrefs = findViewById(R.id.btn_shared_prefs);
-        Button btnSql = findViewById(R.id.btn_sqlite);
-        Button btnFile = findViewById(R.id.btn_external_file);
-        Button btnPermission = findViewById(R.id.btn_permission);
         btnPrefs.setOnClickListener(this::prefs);
+        Button btnSql = findViewById(R.id.btn_sqlite);
         btnSql.setOnClickListener(this::sql);
+        Button btnFile = findViewById(R.id.btn_external_file);
         btnFile.setOnClickListener(this::file);
+        Button btnPermission = findViewById(R.id.btn_permission);
         btnPermission.setOnClickListener(this::permission);
+        Button btnSpinner = findViewById(R.id.btn_spinner);
+        btnSpinner.setOnClickListener(this::spinner);
+        Button btnGridView = findViewById(R.id.btn_grid_view);
+        btnGridView.setOnClickListener(this::gridView);
     }
 
     private void intent1(View view) {
@@ -116,4 +121,13 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    private void spinner(View view) {
+        Intent intent = new Intent(this, SpinnerActivity.class);
+        startActivity(intent);
+    }
+
+    private void gridView(View view) {
+        Intent intent = new Intent(this, GridViewActivity.class);
+        startActivity(intent);
+    }
 }

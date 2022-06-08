@@ -66,10 +66,11 @@
             android:name=".Intent1Activity"
             android:exported="false" />
         <activity
-            android:name=".listview.ListViewActivity"
+            android:name=".fancyview.ListViewActivity"
             android:exported="false" />
         <activity
-            android:name=".viewpager.ViewPagerActivity"
+            android:name=".fancyview.ViewPagerActivity"
+            android:theme="@style/launchTheme"
             android:exported="false" />
         <activity
             android:name=".fragment.FragmentActivity"
@@ -94,6 +95,12 @@
             android:exported="false" />
         <activity
             android:name=".permission.PermissionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fancyview.SpinnerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fancyview.GridViewActivity"
             android:exported="false" />
 
         <service android:name=".service.MyService" />

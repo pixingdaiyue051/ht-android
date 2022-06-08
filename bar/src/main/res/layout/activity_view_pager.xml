@@ -5,9 +5,23 @@
     android:background="@color/bg_color"
     android:orientation="vertical">
 
+    <!-- 全屏翻页 -->
+    <!--<androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>-->
+
+    <!-- 带头部标签页的翻页 -->
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/vp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:layout_height="match_parent">
+
+        <androidx.viewpager.widget.PagerTabStrip
+            android:id="@+id/pts"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </androidx.viewpager.widget.ViewPager>
 
 </LinearLayout>

@@ -24,31 +24,17 @@
             android:text="myintent"/>
 
         <Button
-            android:id="@+id/btn_list_view"
+            android:id="@+id/btn_glide"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="listview"/>
+            android:text="glide"/>
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
-
-        <Button
-            android:id="@+id/btn_view_pager"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="viewpager"/>
-
-        <Button
-            android:id="@+id/btn_fg"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="fragment"/>
 
         <Button
             android:id="@+id/btn_s"
@@ -57,25 +43,12 @@
             android:layout_height="wrap_content"
             android:text="service"/>
 
-    </LinearLayout>
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-
         <Button
             android:id="@+id/btn_broadcast"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="broadcast"/>
-
-        <Button
-            android:id="@+id/btn_glide"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="glide"/>
 
         <Button
             android:id="@+id/btn_shared_prefs"
@@ -118,11 +91,45 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/btn_http"
+            android:id="@+id/btn_list_view"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="okhttp" />
+            android:text="listview"/>
+
+        <Button
+            android:id="@+id/btn_view_pager"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="viewpager"/>
+
+        <Button
+            android:id="@+id/btn_fg"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="fragment"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_spinner"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="spinner" />
+
+        <Button
+            android:id="@+id/btn_grid_view"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="gridview" />
 
     </LinearLayout>
 

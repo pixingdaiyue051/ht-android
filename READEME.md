@@ -133,6 +133,9 @@
         - datetime              日期和时间的组合 可以有-/:
         - date                  日期可以有-/
         - time                  时间可以有:
+4. adapter 视图适配器
+    - ![UML](./res/1654479955.jpg)
+    - ![与视图关系](./res/1654479895.jpg)
 ## 数据存储
 1. SharedPreferences 共享参数
     - 内部存储空间

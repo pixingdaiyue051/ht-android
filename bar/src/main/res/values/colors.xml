@@ -9,4 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="bg_color">#3B552C</color>
+    <color name="bg_trans">#00000000</color>
+    <color name="bg_light">#61AEEC</color>
+
 </resources>
