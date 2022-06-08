@@ -1,17 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/bg_color"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/tv"
+    <ImageView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="view_pager_3"
-        android:textSize="50sp"
-        android:textColor="#BD1BA3"
-        android:gravity="center"/>
+        android:layout_height="match_parent"
+        android:src="@drawable/vp_l_3"
+        android:scaleType="fitXY"/>
 
-</LinearLayout>
+    <Button
+        android:id="@+id/btn_l_start"
+        android:layout_width="140dp"
+        android:layout_height="30dp"
+        android:background="@color/bg_light"
+        android:text="start"
+        android:textSize="16sp"
+        android:layout_centerInParent="true"/>
+</RelativeLayout>

@@ -70,6 +70,9 @@
             android:exported="false" />
         <activity
             android:name=".fancyview.ViewPagerActivity"
+            android:exported="false" />
+        <activity
+            android:name=".fancyview.LaunchPagerActivity"
             android:theme="@style/launchTheme"
             android:exported="false" />
         <activity

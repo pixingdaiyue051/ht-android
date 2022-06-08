@@ -98,18 +98,18 @@
             android:text="listview"/>
 
         <Button
+            android:id="@+id/btn_grid_view"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="gridview" />
+
+        <Button
             android:id="@+id/btn_view_pager"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="viewpager"/>
-
-        <Button
-            android:id="@+id/btn_fg"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="fragment"/>
 
     </LinearLayout>
 
@@ -125,11 +125,18 @@
             android:text="spinner" />
 
         <Button
-            android:id="@+id/btn_grid_view"
+            android:id="@+id/btn_fg"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="gridview" />
+            android:text="fragment"/>
+
+        <Button
+            android:id="@+id/btn_launch"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="launch"/>
 
     </LinearLayout>
 
