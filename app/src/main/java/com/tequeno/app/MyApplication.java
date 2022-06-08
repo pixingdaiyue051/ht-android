@@ -48,6 +48,7 @@ public class MyApplication extends Application {
     // *** 异步守护线程实现持续定位
     private AMapLocationClient mapLocationClient;
     private HandlerThread mapLocationThread;
+    private long locateErrorCount;
 
     public static MyApplication getInstance() {
         return mApp;
@@ -130,10 +131,31 @@ public class MyApplication extends Application {
             Map map = new Map();
             map.target = target;
             mapLocationClient.setLocationListener(aMapLocation -> {
-                Log.d(TAG, "locating: " + System.currentTimeMillis() + "--" + aMapLocation);
-                map.longitude = aMapLocation.getLongitude();
-                map.latitude = aMapLocation.getLatitude();
-                MapOpenHelper.getInstance(mApp).insert(map);
+                try {
+                    Log.d(TAG, "locating: " + System.currentTimeMillis() + "--" + aMapLocation);
+                    if (null == aMapLocation) {
+                        throw new RuntimeException("aMapLocation is null");
+                    }
+                    int errorCode = aMapLocation.getErrorCode();
+                    if (0 != errorCode) {
+                        throw new RuntimeException("locating error " + aMapLocation.getErrorInfo());
+                    }
+                    double longitude = aMapLocation.getLongitude();
+                    double latitude = aMapLocation.getLatitude();
+                    if (0.0D == longitude || 0.0D == latitude) {
+                        throw new RuntimeException("locating error 0.0");
+                    }
+                    map.longitude = longitude;
+                    map.latitude = latitude;
+                    MapOpenHelper.getInstance(mApp).insert(map);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Log.e(TAG, "locationListener: ", e);
+                    mapLocationClient.stopLocation();
+                    if (locateErrorCount++ < 10) {
+                        mapLocationClient.startLocation();
+                    }
+                }
             });
             mapLocationClient.startLocation();
         });
