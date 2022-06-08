@@ -17,17 +17,16 @@
         android:layout_height="wrap_content"
         android:text="btn2"/>
 
-    <!-- 显示添加fragment -->
-    <fragment
+    <!-- 静态注册一个fragment 需要指明具体的加载类 -->
+    <!--<fragment
         android:id="@+id/fg"
         android:name="com.tequeno.bar.fragment.TestFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="match_parent"/>-->
 
-    <!-- 先定义一个布局 将来鼎泰添加fragment -->
+    <!-- 动态注册fragment -->
     <FrameLayout
         android:id="@+id/fl"
-        android:background="#BC6B6B"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
 

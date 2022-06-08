@@ -5,11 +5,11 @@
     android:background="@color/bg_color"
     android:orientation="vertical">
 
-    <TextView
-        android:id="@+id/fg_tv1"
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="现在v的萨芬今天特" />
+        android:src="@drawable/iv_85433"
+        android:scaleType="fitXY"/>
 
     <Button
         android:id="@+id/fg_btn1"

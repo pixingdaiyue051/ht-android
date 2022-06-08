@@ -89,6 +89,7 @@
        1. 依托于Activity
        2. 有自己独立的生命周期
        3. ![生命周期](./res/1653298623.jpg)
+       4. ![生命周期](./res/1654668995.jpg)
 2. Service
    1. ![生命周期](./res/1653463997.jpg)
 3. BroadcastReceiver

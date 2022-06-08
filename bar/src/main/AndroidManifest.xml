@@ -76,6 +76,10 @@
             android:theme="@style/launchTheme"
             android:exported="false" />
         <activity
+            android:name=".fragment.LaunchFgActivity"
+            android:theme="@style/launchTheme"
+            android:exported="false" />
+        <activity
             android:name=".fragment.FragmentActivity"
             android:exported="false" />
         <activity

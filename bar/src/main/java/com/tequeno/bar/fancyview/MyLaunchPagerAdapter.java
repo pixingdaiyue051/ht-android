@@ -27,12 +27,17 @@ public class MyLaunchPagerAdapter extends PagerAdapter {
         View view1 = inflater.inflate(R.layout.view_pager_1, null);
         View view2 = inflater.inflate(R.layout.view_pager_2, null);
         View view3 = inflater.inflate(R.layout.view_pager_3, null);
-        Button btnStart = view3.findViewById(R.id.btn_l_start);
+        View view4 = inflater.inflate(R.layout.view_pager_4, null);
+        View view5 = inflater.inflate(R.layout.view_pager_5, null);
+        Button btnStart = view5.findViewById(R.id.btn_l_start);
         btnStart.setOnClickListener(v -> MainUtil.toast(ctx, "thank you"));
         viewList = new ArrayList<>();
         viewList.add(view1);
         viewList.add(view2);
         viewList.add(view3);
+        viewList.add(view4);
+        viewList.add(view5);
+        Log.d(TAG, "MyLaunchPagerAdapter");
     }
 
     @Override
@@ -60,6 +65,7 @@ public class MyLaunchPagerAdapter extends PagerAdapter {
     @NonNull
     @Override
     public Object instantiateItem(@NonNull ViewGroup container, int position) {
+        Log.d(TAG, "instantiateItem: " + position);
         container.addView(viewList.get(position));
         return viewList.get(position);
     }

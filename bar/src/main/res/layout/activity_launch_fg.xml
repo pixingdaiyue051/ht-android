@@ -5,10 +5,10 @@
     android:background="@color/bg_color"
     android:orientation="vertical">
 
-    <ImageView
+    <!-- 全屏翻页 -->
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/vp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/vp_l_3"
-        android:scaleType="fitXY"/>
+        android:layout_height="match_parent"/>
 
 </LinearLayout>

@@ -105,11 +105,11 @@
             android:text="gridview" />
 
         <Button
-            android:id="@+id/btn_view_pager"
+            android:id="@+id/btn_spinner"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="viewpager"/>
+            android:text="spinner" />
 
     </LinearLayout>
 
@@ -118,18 +118,11 @@
         android:layout_height="wrap_content">
 
         <Button
-            android:id="@+id/btn_spinner"
+            android:id="@+id/btn_view_pager"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_height="wrap_content"
-            android:text="spinner" />
-
-        <Button
-            android:id="@+id/btn_fg"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:text="fragment"/>
+            android:text="viewpager"/>
 
         <Button
             android:id="@+id/btn_launch"
@@ -137,6 +130,26 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:text="launch"/>
+
+        <Button
+            android:id="@+id/btn_launch_fg"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="launch_fg"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/btn_fg"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:text="fragment"/>
 
     </LinearLayout>
 

@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.tequeno.bar.broadcast.BroadcastActivity;
 import com.tequeno.bar.fancyview.LaunchPagerActivity;
 import com.tequeno.bar.fragment.FragmentActivity;
+import com.tequeno.bar.fragment.LaunchFgActivity;
 import com.tequeno.bar.glide.GlideActivity;
 import com.tequeno.bar.fancyview.GridViewActivity;
 import com.tequeno.bar.fancyview.ListViewActivity;
@@ -62,6 +63,8 @@ public class MainActivity extends AppCompatActivity {
         btnGridView.setOnClickListener(this::gridView);
         Button btnLaunch = findViewById(R.id.btn_launch);
         btnLaunch.setOnClickListener(this::launch);
+        Button btnLaunchFg = findViewById(R.id.btn_launch_fg);
+        btnLaunchFg.setOnClickListener(this::launchFg);
     }
 
     private void intent1(View view) {
@@ -136,6 +139,11 @@ public class MainActivity extends AppCompatActivity {
 
     private void launch(View view) {
         Intent intent = new Intent(this, LaunchPagerActivity.class);
+        startActivity(intent);
+    }
+
+    private void launchFg(View view) {
+        Intent intent = new Intent(this, LaunchFgActivity.class);
         startActivity(intent);
     }
 }

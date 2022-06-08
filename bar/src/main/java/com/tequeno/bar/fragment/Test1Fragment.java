@@ -21,7 +21,6 @@ public class Test1Fragment extends Fragment {
 
     private final static String TAG = "Test1Fragment";
 
-    private View root;
     private Button btn;
     private TextView tv;
 
@@ -39,39 +38,25 @@ public class Test1Fragment extends Fragment {
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
-        Log.d(TAG, "Test1Fragment onCreate: ");
+        Log.d(TAG, "onCreate: ");
         super.onCreate(savedInstanceState);
-
-        Log.d(TAG, "Test1Fragment onCreate param1: " + param1);
-        Bundle args = getArguments();
-        if (null != args) {
-            Log.d(TAG, "Test1Fragment onCreate param2: " + args.getString("param2"));
-        }
-        if (null!= callback) {
-            String call = callback.call();
-            String call1 = callback.call1();
-            String call2 = callback.call2();
-            String call3 = callback.call3();
-            Log.d(TAG, "Test1Fragment onCreate callback: " + call + call1 + call2 + call3);
-        }
     }
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container,
                              @Nullable Bundle savedInstanceState) {
-        Log.d(TAG, "Test1Fragment onCreateView: " + root);
-        if (null == root) {
-            root = inflater.inflate(R.layout.fragment_test1, container, false);
+        Log.d(TAG, "onCreateView param1: " + param1);
+        Bundle args = getArguments();
+        if (null != args) {
+            Log.d(TAG, "onCreateView param2: " + args.getString("param2", "null1111"));
         }
-        if (null == tv) {
-            tv = root.findViewById(R.id.fg_tv1);
+        if (null != callback) {
+            String call = callback.call();
+            String call1 = callback.call1();
+            String call2 = callback.call2();
+            String call3 = callback.call3();
+            Log.d(TAG, "onCreateView callback: " + call + call1 + call2 + call3);
         }
-        if (null == btn) {
-            btn = root.findViewById(R.id.fg_btn1);
-        }
-        if (!btn.hasOnClickListeners()) {
-            btn.setOnClickListener(view -> tv.setText("初步形成多个让他热狗"));
-        }
-        return root;
+        return inflater.inflate(R.layout.fragment_test1, container, false);
     }
 }
