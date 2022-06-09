@@ -33,9 +33,11 @@ public class HttpActivity extends AppCompatActivity {
         tv = findViewById(R.id.h_tv);
         Button btnHttp = findViewById(R.id.btn_http);
         Button btnHttps = findViewById(R.id.btn_https);
+        Button btnCs = findViewById(R.id.btn_cs);
 
         btnHttp.setOnClickListener(this::http);
         btnHttps.setOnClickListener(this::https);
+        btnCs.setOnClickListener(this::cs);
 
         http = HttpClientWrapper.getInstance();
     }
@@ -50,6 +52,15 @@ public class HttpActivity extends AppCompatActivity {
                 Log.d(TAG, "http: " + pageDto.count);
             });
             MyApplication.getInstance().postMsg(() -> tv.setText(dto.sign), 0);
+        });
+    }
+
+    private void cs(View view) {
+        String url = "http://qinshitong.work:8888/viva/okhttp_cs";
+
+        http.<String>postAsync(url, "{\"password\": \"123456\",\"username\": \"jh\"}", ResponseWrapper.TAG_1, dto -> {
+            Log.d(TAG, "cs: " + dto);
+            MyApplication.getInstance().postMsg(() -> tv.setText(dto), 0);
         });
     }
 

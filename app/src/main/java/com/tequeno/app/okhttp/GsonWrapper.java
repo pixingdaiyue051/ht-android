@@ -23,6 +23,8 @@ public class GsonWrapper {
         util.map = new HashMap<>();
         util.map.put(ResponseWrapper.TAG, new TypeToken<ResponseWrapper<Boolean>>() {
         });
+        util.map.put(ResponseWrapper.TAG_1, new TypeToken<ResponseWrapper<String>>() {
+        });
         util.map.put(LoginResDto.TAG, new TypeToken<ResponseWrapper<LoginResDto>>() {
         });
         util.map.put(UserResDto.TAG, new TypeToken<ResponseWrapper<UserResDto>>() {

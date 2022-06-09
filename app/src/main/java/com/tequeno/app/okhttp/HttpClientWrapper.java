@@ -66,10 +66,11 @@ public class HttpClientWrapper {
 
             ResponseWrapper<T> res1 = GsonWrapper.getInstance().fromJson(res, typeKey);
 
-            if (0 != res1.code) {
-                Log.e(TAG, "post: " + res1.msg);
+            // TODO 返回错误结果 另作处理
+            if (0 != res1.code && !res1.success) {
                 return;
             }
+            // 使用返回值
             if (null != consumer) {
                 consumer.accept(res1.data);
             }

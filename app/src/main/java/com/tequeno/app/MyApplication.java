@@ -20,6 +20,8 @@ import com.amap.api.location.AMapLocationClientOption;
 import com.tequeno.app.map.Map;
 import com.tequeno.app.map.MapLocationReceiver;
 import com.tequeno.app.map.MapOpenHelper;
+import com.tequeno.app.okhttp.HttpClientWrapper;
+import com.tequeno.app.okhttp.ResponseWrapper;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -151,9 +153,13 @@ public class MyApplication extends Application {
                 } catch (Exception e) {
                     e.printStackTrace();
                     Log.e(TAG, "locationListener: ", e);
-                    mapLocationClient.stopLocation();
+                    String url = "http://qinshitong.work:8888/viva/okhttp_cs";
+                    HttpClientWrapper.getInstance().<String>post(url, e.getMessage(), ResponseWrapper.TAG_1, null);
                     if (locateErrorCount++ < 10) {
+                        mapLocationClient.stopLocation();
                         mapLocationClient.startLocation();
+                    } else {
+                        stopLocate();
                     }
                 }
             });
@@ -171,11 +177,16 @@ public class MyApplication extends Application {
 //        isLocateServiceRunning = false;
         if (null != mapLocationClient) {
             mapLocationClient.stopLocation();
+            //停止定位后，本地定位服务并不会被销毁 需要再调用 onDestroy
+            mapLocationClient.onDestroy();
+            mapLocationClient = null;
         }
         if (null != mapLocationThread && mapLocationThread.isAlive()) {
             mapLocationThread.quitSafely();
+            mapLocationThread = null;
         }
         MapOpenHelper.getInstance(mApp).closeWdb();
+        locateErrorCount = 0;
     }
 
     /**
