@@ -2,18 +2,18 @@
 1. 基于linux kernel
 2. OS
 3.
-    | 版本号 | API | 发布时间|
-    | :-: | :-: | :-: |
-    | andriod 13| 33 | 2022-02 |
-    | andriod 12| 31 | 2021-10 |
-    | andriod 11| 30 | 2020-09 |
-    | andriod 10| 29 | 2019-08 |
-    | andriod 9| 28 | 2018-08 |
-    | andriod 8| 26/27 | 2017-08 |
-    | andriod 7| 24/25 | 2016-08 |
-    | andriod 6| 23 | 2015-09 |
-    | andriod 5| 21/22 | 2014-06 |
-    | andriod 4.4| 19/20 | 2013-09 |
+    | 版本号 | API | 发布时间| 字母|
+    | :-: | :-: | :-: | :-: |
+    | andriod 13| 33 | 2022-02 | ? |
+    | andriod 12| 31 | 2021-10 | S |
+    | andriod 11| 30 | 2020-09 | R |
+    | andriod 10| 29 | 2019-08 | Q |
+    | andriod 9| 28 | 2018-08 | P |
+    | andriod 8| 26/27 | 2017-08 | O/O_MR1 |
+    | andriod 7| 24/25 | 2016-08 | N/N_MR1 |
+    | andriod 6| 23 | 2015-09 | M |
+    | andriod 5| 21/22 | 2014-06 | (L)LOLLIPOP/LOLLIPOP_MR1 |
+    | andriod 4.4| 19/20 | 2013-09 | KITKAT/KITKAT_WATCH |
 
     | Android | CPU类型 |
     | :-: | :-: |
