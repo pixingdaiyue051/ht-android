@@ -50,7 +50,7 @@ public class MyListViewAdapter extends BaseAdapter {
             holder = new MyViewHolder();
 //            holder.ck = convertView.findViewById(R.id.ck);
             holder.tv = convertView.findViewById(R.id.tv);
-            holder.btn = convertView.findViewById(R.id.btn);
+//            holder.btn = convertView.findViewById(R.id.btn);
 //            holder.ck.setOnCheckedChangeListener((b,isChecked)-> Log.d(TAG, "holder.ck " + isChecked));
 //            holder.tv.setOnClickListener(v -> Log.d(TAG, "holder.tv "));
 //            holder.btn.setOnClickListener(v -> Log.d(TAG, "holder.btn "));
@@ -62,7 +62,7 @@ public class MyListViewAdapter extends BaseAdapter {
         MyViewDto dto = dataList.get(position);
 //        holder.ck.setText(dto.ckName);
         holder.tv.setText(dto.tvName);
-        holder.btn.setText(dto.btnName);
+//        holder.btn.setText(dto.btnName);
         return convertView;
     }
 }

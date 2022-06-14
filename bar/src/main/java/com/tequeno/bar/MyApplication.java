@@ -31,10 +31,6 @@ public class MyApplication extends Application {
 
     private ExecutorService mThreadPool;
 
-    public ExecutorService getThreadPool() {
-        return mThreadPool;
-    }
-
     private MyDataBase mDb;
 
     public MyDataBase getDb() {

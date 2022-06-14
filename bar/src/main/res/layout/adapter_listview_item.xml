@@ -25,11 +25,11 @@
         android:gravity="center"
         tools:text="北大汇丰他依然"/>
 
-    <Button
+    <!--<Button
         android:id="@+id/btn"
         android:layout_width="0dp"
         android:layout_weight="1"
         android:layout_height="match_parent"
-        tools:text="试试"/>
+        tools:text="试试"/>-->
 
 </LinearLayout>
