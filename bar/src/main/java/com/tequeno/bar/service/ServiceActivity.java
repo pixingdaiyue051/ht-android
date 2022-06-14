@@ -1,6 +1,8 @@
 package com.tequeno.bar.service;
 
+import android.app.ActivityManager;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.os.Bundle;
@@ -13,10 +15,13 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.tequeno.bar.R;
 
+import java.util.List;
+
 public class ServiceActivity extends AppCompatActivity {
 
     private final static String TAG = "ServiceActivity";
     private ServiceConnection conn;
+    private Intent serviceIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,25 +37,15 @@ public class ServiceActivity extends AppCompatActivity {
         btnStop.setOnClickListener(this::stopAService);
         btnBind.setOnClickListener(this::bindAService);
         btnUnbind.setOnClickListener(this::unbindAService);
-    }
-
-    private void startAService(View view) {
         // MyService
-        Intent service = new Intent(this, MyService.class)
+        serviceIntent = new Intent(this, MyService.class)
                 .putExtra("param1", "param1");
-        startService(service);
-    }
-
-    private void stopAService(View view) {
-        stopService(new Intent(this, MyService.class));
-    }
-
-    private void bindAService(View view) {
-        Intent service = new Intent(this, MyService.class);
         conn = new ServiceConnection() {
             @Override
-            public void onServiceConnected(ComponentName name, IBinder service) {
-                Log.d(TAG, "onServiceConnected: " + name + service);
+            public void onServiceConnected(ComponentName name, IBinder iBinder) {
+                Log.d(TAG, "onServiceConnected: " + name + iBinder);
+//                MyBindService.MyBinder b = (MyBindService.MyBinder) iBinder;
+//                b.test();
             }
 
             @Override
@@ -58,10 +53,31 @@ public class ServiceActivity extends AppCompatActivity {
                 Log.d(TAG, "onServiceDisconnected: " + name);
             }
         };
-        bindService(service, conn, BIND_AUTO_CREATE);
+    }
+
+    private void startAService(View view) {
+        startService(serviceIntent);
+    }
+
+    private void stopAService(View view) {
+        stopService(serviceIntent);
+    }
+
+    private void bindAService(View view) {
+        Intent bindServiceIntent = new Intent(this, MyBindService.class);
+        bindService(serviceIntent, conn, BIND_AUTO_CREATE);
     }
 
     private void unbindAService(View view) {
         unbindService(conn);
+
+
+
+        ActivityManager manager = (ActivityManager) getSystemService(Context.ACTIVITY_SERVICE);
+
+        // 获取正在运行的服务（此处设置最多取1000个）
+        List<ActivityManager.RunningServiceInfo> runningServices = manager
+                .getRunningServices(1000);
+
     }
 }

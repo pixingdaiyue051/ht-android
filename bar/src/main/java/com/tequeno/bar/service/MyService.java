@@ -2,11 +2,14 @@ package com.tequeno.bar.service;
 
 import android.app.Service;
 import android.content.Intent;
+import android.os.Binder;
 import android.os.Handler;
 import android.os.HandlerThread;
 import android.os.IBinder;
 import android.os.Message;
 import android.util.Log;
+
+import androidx.annotation.Nullable;
 
 import java.util.stream.IntStream;
 
@@ -19,6 +22,7 @@ public class MyService extends Service {
     private final static String TAG = "MyService";
     private Handler handler;
     private HandlerThread thread;
+    private String paramM;
 
     public MyService() {
         Log.d(TAG, TAG);
@@ -28,6 +32,7 @@ public class MyService extends Service {
     public void onCreate() {
         super.onCreate();
         Log.d(TAG, "onCreate: ");
+        paramM = "M";
     }
 
     @Override
@@ -99,23 +104,15 @@ public class MyService extends Service {
         Log.d(TAG, "onDestroy: " + this);
     }
 
-    @Override
-    public boolean onUnbind(Intent intent) {
-        Log.d(TAG, "onUnbind: ");
-        return super.onUnbind(intent);
-    }
-
-    @Override
-    public void onRebind(Intent intent) {
-        Log.d(TAG, "onRebind: ");
-        super.onRebind(intent);
-    }
-
+    @Nullable
     @Override
     public IBinder onBind(Intent intent) {
-        Log.d(TAG, "onBind: ");
-        initThread(1000);
-        testThreadAlive();
-        return null;
+        return new MyBinder();
+    }
+
+    public class MyBinder extends Binder {
+        public void test() {
+            Log.d(TAG, "test: " + paramM);
+        }
     }
 }
