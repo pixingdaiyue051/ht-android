@@ -63,6 +63,9 @@
             </intent-filter>
         </activity>
         <activity
+            android:name=".TestActivity"
+            android:exported="false" />
+        <activity
             android:name=".Intent1Activity"
             android:exported="false" />
         <activity
@@ -111,6 +114,7 @@
             android:exported="false" />
 
         <service android:name=".service.MyService" />
+        <service android:name=".service.MyBindService" />
 
         <receiver
             android:name=".broadcast.MyReceiver"

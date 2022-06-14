@@ -33,6 +33,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Button btnTest = findViewById(R.id.btn_test);
+        btnTest.setOnClickListener(this::test);
         Button btn1 = findViewById(R.id.btn_intent1);
         btn1.setOnClickListener(this::intent1);
         Button btnMyIntent = findViewById(R.id.btn_my_intent);
@@ -65,6 +67,11 @@ public class MainActivity extends AppCompatActivity {
         btnLaunch.setOnClickListener(this::launch);
         Button btnLaunchFg = findViewById(R.id.btn_launch_fg);
         btnLaunchFg.setOnClickListener(this::launchFg);
+    }
+
+    private void test(View view) {
+        Intent intent = new Intent(this, TestActivity.class);
+        startActivity(intent);
     }
 
     private void intent1(View view) {
