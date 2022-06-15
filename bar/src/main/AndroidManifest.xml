@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.tequeno.bar">
     <!--
         出于安全考虑 Android 11之后的版本使用contentProvider访问其他软件包需要先声明
@@ -30,6 +31,9 @@
     <!-- 通信录权限 -->
     <uses-permission android:name="android.permission.READ_CONTACTS" />
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
+
+    <!-- 手机震动权限 -->
+    <uses-permission android:name="android.permission.VIBRATE"/>
 
     <application
         android:name=".MyApplication"
@@ -62,9 +66,28 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <!--
+        一般情况下当activity配置发生改变时 activity会被销毁然后重新创建
+        configChanges 设置某些特定操作不会销毁当前activity而是调用onConfigurationChanged方法
+        orientation 屏幕方向改变
+        screenLayout 屏幕显示发生改变 比如分屏全屏切换
+        screenSize 屏幕大小发生改变 比如横屏竖屏切换
+        android:configChanges="orientation|screenLayout|screenSize"
+
+        screenOrientation 设置固定的屏幕方向
+        android:screenOrientation="portrait"
+        tools:ignore="LockedOrientationActivity"
+
+        supportsPictureInPicture 支持当前activity以画中画模式运行
+        android:supportsPictureInPicture="true"
+        -->
         <activity
             android:name=".TestActivity"
-            android:exported="false" />
+            android:exported="true"
+            android:screenOrientation="portrait"
+            tools:ignore="LockedOrientationActivity"
+            android:configChanges="orientation|screenLayout|screenSize"
+            android:supportsPictureInPicture="true"/>
         <activity
             android:name=".Intent1Activity"
             android:exported="false" />
@@ -90,7 +113,7 @@
             android:exported="false" />
         <activity
             android:name=".broadcast.BroadcastActivity"
-            android:exported="false" />
+            android:exported="false"/>
         <activity
             android:name=".glide.GlideActivity"
             android:exported="false" />

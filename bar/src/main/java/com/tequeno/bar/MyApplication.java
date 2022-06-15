@@ -76,8 +76,8 @@ public class MyApplication extends Application {
      */
     @Override
     public void onConfigurationChanged(@NonNull Configuration newConfig) {
-        Log.d(TAG, "onConfigurationChanged: ");
         super.onConfigurationChanged(newConfig);
+        Log.d(TAG, "onConfigurationChanged: " + newConfig);
     }
 
     /**

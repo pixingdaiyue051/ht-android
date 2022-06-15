@@ -20,7 +20,4 @@
 
     <string name="export_name_myintent">com.tequeno.bar.myintent</string>
     <string name="export_name_myreceiver">com.tequeno.bar.myreceiver</string>
-    <string name="export_name_mybackreceiver">com.tequeno.bar.mybackreceiver</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

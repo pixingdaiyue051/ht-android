@@ -16,4 +16,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="动态注册广播" />
+
+    <Button
+        android:id="@+id/btn_ordered_receiver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="有序广播" />
+
+    <Button
+        android:id="@+id/btn_alarm_receiver"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="系统闹钟" />
 </LinearLayout>
