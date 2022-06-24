@@ -28,24 +28,27 @@ public class MyListViewAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
+        Log.d(TAG, "getCount: ");
         return dataList.size();
     }
 
     @Override
     public Object getItem(int position) {
+        Log.d(TAG, "getItem: " + position);
         return dataList.get(position);
     }
 
     @Override
     public long getItemId(int position) {
+        Log.d(TAG, "getItemId: " + position);
         return position;
     }
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        Log.d(TAG, "getView: " + position);
         MyViewHolder holder;
         if (null == convertView) {
-            Log.d(TAG, "getView: convertView");
             convertView = LayoutInflater.from(ctx).inflate(R.layout.adapter_listview_item, parent, false);
             holder = new MyViewHolder();
 //            holder.ck = convertView.findViewById(R.id.ck);

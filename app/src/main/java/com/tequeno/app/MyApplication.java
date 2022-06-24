@@ -64,8 +64,6 @@ public class MyApplication extends Application {
         Log.d(TAG, "onCreate: ");
         super.onCreate();
         mApp = this;
-        mThreadPool = Executors.newCachedThreadPool();
-        mHandler = new Handler(getMainLooper());
     }
 
     /**
@@ -74,7 +72,19 @@ public class MyApplication extends Application {
      * @param r
      */
     public void asyncTask(Runnable r) {
+        if (null == mThreadPool) {
+            mThreadPool = Executors.newCachedThreadPool();
+        }
         mThreadPool.execute(r);
+    }
+
+    /**
+     * 往主线程队列添加任务
+     *
+     * @param r
+     */
+    public void run(Runnable r) {
+        run(r, 0L);
     }
 
     /**
@@ -83,7 +93,10 @@ public class MyApplication extends Application {
      * @param r
      * @param delay
      */
-    public void postMsg(Runnable r, long delay) {
+    public void run(Runnable r, long delay) {
+        if (null == mHandler) {
+            mHandler = new Handler(getMainLooper());
+        }
         mHandler.postDelayed(r, delay);
     }
 
@@ -117,7 +130,7 @@ public class MyApplication extends Application {
 //        startService(mapLocationIntent);
 
         String target = MainUtil.day();
-        String mapThreadName = "thread-map-location-1";
+        String mapThreadName = "thread-map-location-0";
         mapLocationThread = new HandlerThread(mapThreadName);
         mapLocationThread.setDaemon(true);
         mapLocationThread.start();
@@ -128,7 +141,8 @@ public class MyApplication extends Application {
 // 使用连续定位
             mLocationOption.setOnceLocation(false);
 // 定位时间间隔
-            mLocationOption.setInterval(3000L);
+            long interval = 3000L;
+            mLocationOption.setInterval(interval);
             mapLocationClient.setLocationOption(mLocationOption);
             Map map = new Map();
             map.target = target;
@@ -157,7 +171,7 @@ public class MyApplication extends Application {
                     HttpClientWrapper.getInstance().<String>post(url, e.getMessage(), ResponseWrapper.TAG_1, null);
                     if (locateErrorCount++ < 10) {
                         mapLocationClient.stopLocation();
-                        mapLocationClient.startLocation();
+                        handler.postDelayed(() -> mapLocationClient.startLocation(), interval);
                     } else {
                         stopLocate();
                     }

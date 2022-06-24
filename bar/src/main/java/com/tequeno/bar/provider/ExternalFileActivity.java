@@ -27,12 +27,14 @@ import com.tequeno.bar.R;
 import com.tequeno.bar.permission.PermissionEnum;
 import com.tequeno.bar.permission.PermissionUtil;
 
+import java.io.File;
 import java.io.FileOutputStream;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Arrays;
 
 public class ExternalFileActivity extends AppCompatActivity {
 
@@ -99,8 +101,20 @@ public class ExternalFileActivity extends AppCompatActivity {
 
 //        // 外部存储空间-公共读写  /sdcard/Downloads
 //        dir = Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS).toString();
-//        // 外部存储空间-私有读写 /sdcard/Android/data/Downloads/应用包名/files
-        dir = getExternalFilesDir(Environment.DIRECTORY_DOWNLOADS).toString();
+//        // 外部存储空间-私有读写 /sdcard/Android/data/应用包名/files
+
+        Log.d(TAG, "getExternalStorageDirectory : " + Environment.getExternalStorageDirectory()); //  /storage/emulated/0
+        Log.d(TAG, "getDownloadCacheDirectory : " + Environment.getDownloadCacheDirectory()); //  /data/cache
+        Log.d(TAG, "getDataDirectory : " + Environment.getDataDirectory()); //  /data
+        Log.d(TAG, "getRootDirectory : " + Environment.getRootDirectory()); //  /system
+        Log.d(TAG, "getExternalStoragePublicDirectory : " + Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS)); //  /storage/emulated/0/Download
+        Log.d(TAG, "getExternalFilesDir : " + MyApplication.getInstance().getExternalFilesDir("Environment.DIRECTORY_DOWNLOADS")); //  /storage/emulated/0/Android/data/com.tequeno.bar/files/Download
+
+
+        File[] externalMediaDirs = MyApplication.getInstance().getExternalMediaDirs();
+        Arrays.stream(externalMediaDirs).map(f -> Log.d(TAG, "onCreate: "+ f.getAbsolutePath()));
+
+        dir = getExternalFilesDir("Environment.DIRECTORY_DOWNLOADS").toString();
         filePath = "/test1.txt";
         picPath = "/test1.jpg";
     }

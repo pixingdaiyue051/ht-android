@@ -55,12 +55,12 @@ public class MapActivity extends AppCompatActivity {
         Button btnStart = findViewById(R.id.btn_start_locate);
         btnStart.setOnClickListener(view -> {
             MyApplication.getInstance().startLocate();
-            MainUtil.toast(this, "开始定位...");
+            MainUtil.toast( "开始定位...");
         });
         Button btnStop = findViewById(R.id.btn_stop_locate);
         btnStop.setOnClickListener(view -> {
             MyApplication.getInstance().stopLocate();
-            MainUtil.toast(this, "结束定位");
+            MainUtil.toast("结束定位");
         });
         Button btnRead = findViewById(R.id.btn_read_locate);
         btnRead.setOnClickListener(this::drawPolyLine);

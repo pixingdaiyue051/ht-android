@@ -5,4 +5,25 @@
     android:background="@color/bg_color"
     android:orientation="vertical">
 
+
+    <Button
+        android:id="@+id/btn_start"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="start"/>
+
+
+    <Button
+        android:id="@+id/btn_stop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="stop"/>
+
+
+    <Button
+        android:id="@+id/btn_cs"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="cs"/>
+
 </LinearLayout>

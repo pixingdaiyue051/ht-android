@@ -43,7 +43,7 @@ public class LaunchFragment extends Fragment {
         if (position == idx) {
             Button btn = view.findViewById(R.id.btn_l_start);
             btn.setVisibility(View.VISIBLE);
-            btn.setOnClickListener(v -> MainUtil.toast(getContext(), "thank you"));
+            btn.setOnClickListener(v -> MainUtil.toast("thank you"));
         }
         return view;
     }

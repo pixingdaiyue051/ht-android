@@ -81,13 +81,13 @@ public class FormActivity extends AppCompatActivity {
             String uname = unameEditor.getText().toString();
             if (TextUtils.isEmpty(uname)) {
                 Log.d(TAG, "请输入用户名");
-                MainUtil.toast(this, "请输入用户名");
+                MainUtil.toast("请输入用户名");
                 return;
             }
             String pwd = pwdEditor.getText().toString();
             if (TextUtils.isEmpty(pwd)) {
                 Log.d(TAG, "请输入密码");
-                MainUtil.toast(this, "请输入密码");
+                MainUtil.toast("请输入密码");
                 return;
             }
             LoginDto dto = new LoginDto();
@@ -95,7 +95,7 @@ public class FormActivity extends AppCompatActivity {
             dto.password = pwd;
             String json = MainUtil.toJsonString(dto);
             Log.d(TAG, String.format("输入内容 %s", json));
-            MainUtil.toast(this, String.format("输入内容 %s", json));
+            MainUtil.toast(String.format("输入内容 %s", json));
         });
 
         // 对话框

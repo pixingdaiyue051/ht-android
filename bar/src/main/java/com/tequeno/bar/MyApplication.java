@@ -4,6 +4,7 @@ import android.app.Application;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.net.Uri;
+import android.os.Handler;
 import android.provider.Settings;
 import android.util.Log;
 
@@ -24,17 +25,12 @@ public class MyApplication extends Application {
     public final static String DB_NAME = "test.db";
 
     private static MyApplication mApp;
+    private ExecutorService mThreadPool;
+    private Handler mHandler;
+    private MyDataBase mDb;
 
     public static MyApplication getInstance() {
         return mApp;
-    }
-
-    private ExecutorService mThreadPool;
-
-    private MyDataBase mDb;
-
-    public MyDataBase getDb() {
-        return mDb;
     }
 
     /**
@@ -45,19 +41,50 @@ public class MyApplication extends Application {
         Log.d(TAG, "onCreate: ");
         super.onCreate();
         mApp = this;
-
-        mDb = Room.databaseBuilder(this, MyDataBase.class, "test2.db")
-                .allowMainThreadQueries() // 允许使用主线程查询数据库 主线程是UI线程 不应该这么做
-                .addMigrations() // 数据库迁移时自动备份
-                .build();
-
-        mThreadPool = Executors.newCachedThreadPool();
-
-
     }
 
+    /**
+     * 执行一个异步任务
+     *
+     * @param r
+     */
     public void asyncTask(Runnable r) {
+        if (null == mThreadPool) {
+            mThreadPool = Executors.newCachedThreadPool();
+        }
         mThreadPool.execute(r);
+    }
+
+    /**
+     * 往主线程队列添加任务
+     *
+     * @param r
+     */
+    public void run(Runnable r) {
+        run(r, 0L);
+    }
+
+    /**
+     * 往主线程队列添加任务
+     *
+     * @param r
+     * @param delay
+     */
+    public void run(Runnable r, long delay) {
+        if (null == mHandler) {
+            mHandler = new Handler(getMainLooper());
+        }
+        mHandler.postDelayed(r, delay);
+    }
+
+    public MyDataBase getDb() {
+        if (null == mDb) {
+            mDb = Room.databaseBuilder(this, MyDataBase.class, "test2.db")
+                    .allowMainThreadQueries() // 允许使用主线程查询数据库 主线程是UI线程 不应该这么做
+                    .addMigrations() // 数据库迁移时自动备份
+                    .build();
+        }
+        return mDb;
     }
 
     /**

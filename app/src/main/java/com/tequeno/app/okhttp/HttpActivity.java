@@ -51,7 +51,7 @@ public class HttpActivity extends AppCompatActivity {
             http.<PageResDto<UserResDto>>post(url1, "{}", UserResDto.TAG_PAGE, pageDto -> {
                 Log.d(TAG, "http: " + pageDto.count);
             });
-            MyApplication.getInstance().postMsg(() -> tv.setText(dto.sign), 0);
+            MyApplication.getInstance().run(() -> tv.setText(dto.sign));
         });
     }
 
@@ -60,7 +60,7 @@ public class HttpActivity extends AppCompatActivity {
 
         http.<String>postAsync(url, "{\"password\": \"123456\",\"username\": \"jh\"}", ResponseWrapper.TAG_1, dto -> {
             Log.d(TAG, "cs: " + dto);
-            MyApplication.getInstance().postMsg(() -> tv.setText(dto), 0);
+            MyApplication.getInstance().run(() -> tv.setText(dto));
         });
     }
 
@@ -68,7 +68,7 @@ public class HttpActivity extends AppCompatActivity {
         String url = "https://qinshitong.work/v2/demo/log";
         http.<Boolean>postAsync(url, "", ResponseWrapper.TAG, msg -> {
             Log.d(TAG, "prod: " + msg);
-            MyApplication.getInstance().postMsg(() -> tv.setText(String.valueOf(msg)), 0);
+            MyApplication.getInstance().run(() -> tv.setText(String.valueOf(msg)));
         });
     }
 }

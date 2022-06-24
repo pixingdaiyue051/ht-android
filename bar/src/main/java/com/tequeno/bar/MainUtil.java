@@ -16,10 +16,11 @@ public final class MainUtil {
      */
     public static int dip2Px(Context context, float dip) {
         float density = context.getResources().getDisplayMetrics().density;
-        return (int) (density * dip + 0.5f);
+        return (int) (density * dip + 0.5F);
     }
 
-    public static void toast(Context context, String msg) {
+    public static void toast(String msg) {
+        Context context = MyApplication.getInstance().getApplicationContext();
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
 

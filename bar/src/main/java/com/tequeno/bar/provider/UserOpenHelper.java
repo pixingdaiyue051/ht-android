@@ -170,6 +170,9 @@ public class UserOpenHelper extends SQLiteOpenHelper {
             selectionArgs = new String[]{name};
         }
         Cursor cursor = this.openRdb().rawQuery(sql, selectionArgs);
+        Log.d(TAG, "query: "+ cursor.getCount());
+        Log.d(TAG, "query: "+ cursor.getColumnCount());
+
         while (cursor.moveToNext()) {
             long id = cursor.getLong(0);
             String name1 = cursor.getString(1);

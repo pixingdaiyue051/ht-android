@@ -30,7 +30,7 @@ public class MyLaunchPagerAdapter extends PagerAdapter {
         View view4 = inflater.inflate(R.layout.view_pager_4, null);
         View view5 = inflater.inflate(R.layout.view_pager_5, null);
         Button btnStart = view5.findViewById(R.id.btn_l_start);
-        btnStart.setOnClickListener(v -> MainUtil.toast(ctx, "thank you"));
+        btnStart.setOnClickListener(v -> MainUtil.toast( "thank you"));
         viewList = new ArrayList<>();
         viewList.add(view1);
         viewList.add(view2);

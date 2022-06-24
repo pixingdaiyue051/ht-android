@@ -28,15 +28,24 @@ public class BtnActivity extends AppCompatActivity implements View.OnClickListen
         tvTest = findViewById(R.id.tv_po_test);
 
         Button btn1 = findViewById(R.id.btn_po_1);
-//        btn1.setOnClickListener(view -> setBtn1Text(btn1, "doClick: ", "%s点击了%s"));
-        btn1.setOnClickListener(this);
+        btn1.setOnClickListener(v -> {
+            Object tag = v.getTag();
+            if (null == tag) {
+                return;
+            }
+            Log.d(TAG, "doClick: ");
+            setBtn1Text(btn1, "doClick: ", "%s点击了%s");
+            v.setTag(null);
+        });
 
         // 长按事件 长按超过500ms触发
         // return true if the callback consumed the long click, false otherwise.
         // 是否消耗点击事件 true不再向外冒泡
-        btn1.setOnLongClickListener(view -> {
+        btn1.setOnLongClickListener(v -> {
+            v.setTag(1);
+            Log.d(TAG, "doLongClick: ");
             setBtn1Text(btn1, "doLongClick: ", "%s长按%s");
-            return true;
+            return false;
         });
 
 
@@ -113,9 +122,9 @@ public class BtnActivity extends AppCompatActivity implements View.OnClickListen
         if (R.id.btn_po_1 == id) {
             setBtn1Text(btn, "doClick: ", "%s点击了%s");
         } else if (R.id.btn_po_ok == id) {
-            setBtnEnabled( true, "可以点击");
+            setBtnEnabled(true, "可以点击");
         } else if (R.id.btn_po_deny == id) {
-            setBtnEnabled( false, "不可点击");
+            setBtnEnabled(false, "不可点击");
         } else if (R.id.btn_po_test == id) {
             setBtnText();
         } else {

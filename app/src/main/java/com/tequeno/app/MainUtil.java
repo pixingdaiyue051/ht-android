@@ -44,18 +44,19 @@ public final class MainUtil {
         return new Gson().toJson(obj);
     }
 
-    public static void toast(Context context, String msg) {
+    public static void toast(String msg) {
+        Context context = MyApplication.getInstance().getApplicationContext();
         Toast.makeText(context, msg, Toast.LENGTH_SHORT).show();
     }
 
     /**
      * 获取当前模式下的sha1
      *
-     * @param context
      * @return
      */
-    public static String sha1(Context context) {
+    public static String sha1() {
         try {
+            Context context = MyApplication.getInstance().getApplicationContext();
             PackageInfo info = context.getPackageManager().getPackageInfo(
                     context.getPackageName(), PackageManager.GET_SIGNATURES);
             byte[] cert = info.signatures[0].toByteArray();

@@ -76,7 +76,7 @@ public class LoginActivity extends AppCompatActivity {
         String text = formPhone.getText().toString();
         boolean checked = !TextUtils.isEmpty(text);
         if (!checked) {
-            MainUtil.toast(this, "请输入手机号");
+            MainUtil.toast("请输入手机号");
         }
         return checked;
     }
@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
         String text = formOtp.getText().toString();
         boolean checked = !TextUtils.isEmpty(text) && text.length() == 6;
         if (!checked) {
-            MainUtil.toast(this, "请输入6位验证码");
+            MainUtil.toast("请输入6位验证码");
         }
         return checked;
     }
@@ -106,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
         String text = formPassword.getText().toString();
         boolean checked = !TextUtils.isEmpty(text);
         if (!checked) {
-            MainUtil.toast(this, "请输入密码");
+            MainUtil.toast("请输入密码");
         }
         return checked;
     }
