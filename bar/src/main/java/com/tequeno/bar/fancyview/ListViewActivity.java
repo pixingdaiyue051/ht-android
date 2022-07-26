@@ -85,7 +85,7 @@ public class ListViewActivity extends AppCompatActivity {
             ckd.setOnCheckedChangeListener((buttonView, isChecked) -> {
                 if (isChecked) {
                     listView.setDivider(AppCompatResources.getDrawable(this, R.color.black));
-                    listView.setDividerHeight(MainUtil.dip2Px(this, 1));
+                    listView.setDividerHeight(MainUtil.dip2Px(1));
                 } else {
                     listView.setDivider(null);
                     listView.setDividerHeight(0);

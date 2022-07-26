@@ -20,6 +20,7 @@ import androidx.appcompat.widget.SwitchCompat;
 import com.tequeno.app.MainUtil;
 import com.tequeno.app.R;
 import com.tequeno.app.login.LoginDto;
+import com.tequeno.app.okhttp.GsonWrapper;
 
 public class FormActivity extends AppCompatActivity {
 
@@ -93,7 +94,7 @@ public class FormActivity extends AppCompatActivity {
             LoginDto dto = new LoginDto();
             dto.username = uname;
             dto.password = pwd;
-            String json = MainUtil.toJsonString(dto);
+            String json = GsonWrapper.getInstance().toJson(dto);
             Log.d(TAG, String.format("输入内容 %s", json));
             MainUtil.toast(String.format("输入内容 %s", json));
         });

@@ -14,26 +14,28 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="开启定位" />
+            android:text="开启" />
 
         <Button
             android:id="@+id/btn_stop_locate"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="关闭定位" />
+            android:text="关闭" />
 
         <Button
-            android:id="@+id/btn_read_locate"
+            android:id="@+id/btn_load_points"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="读取定位点" />
+            android:text="读取" />
 
-        <EditText
-            android:id="@+id/et_day"
-            android:layout_width="30dp"
-            android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/btn_status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="状态" />
 
         <EditText
             android:id="@+id/et_point_num"

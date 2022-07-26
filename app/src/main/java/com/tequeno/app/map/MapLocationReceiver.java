@@ -5,13 +5,13 @@ import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
 
-import com.tequeno.app.MyApplication;
 import com.tequeno.app.R;
 
 @Deprecated
 public class MapLocationReceiver extends BroadcastReceiver {
 
     private final static String TAG = "MapLocationReceiver";
+    private MapLocation mapLocation;
 
     /**
      * @param context
@@ -25,8 +25,11 @@ public class MapLocationReceiver extends BroadcastReceiver {
         if (!alarmLocation.equals(intent.getAction())) {
             return;
         }
-        if (!MyApplication.getInstance().isLocateServiceRunning) {
-            MyApplication.getInstance().startLocate();
+        if (null == mapLocation) {
+            mapLocation = new MapLocation();
+        }
+        if (!mapLocation.isLocateServiceRunning) {
+            mapLocation.startLocate();
         }
     }
 }

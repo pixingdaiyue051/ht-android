@@ -1,19 +1,14 @@
-plugins {
-    id 'com.android.application' // 使用全局配置内的插件
-}
+apply plugin: 'com.android.application'
 
 android {
-    compileSdk 31 // 编译使用的sdk版本号
-//    buildToolsVersion "32.1.0-rc1" // 具体编译版本号 在sdk的安装目录下 build-tools内查看版本
+    compileSdk rootProject.ext.compileSdk
 
     defaultConfig {
-        applicationId "com.tequeno.app" // 模块的应用编号即包名 需要和AndroidManifest.xml中的package属性一致
-        minSdk 26 // 运行支持的最低版本号
-        targetSdk 31 // 目标运行版本号
-        versionCode 1 // 版本号
-        versionName "1.0" // 版本名字
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        applicationId  rootProject.ext.applicationId
+        minSdk rootProject.ext.minSdk
+        targetSdk rootProject.ext.targetSdk
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
 
         // 引用高德地图.so
         ndk {

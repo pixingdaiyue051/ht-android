@@ -1,5 +1,6 @@
 package com.tequeno.app.map;
 
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Environment;
@@ -22,15 +23,17 @@ import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.amap.api.maps.model.PolylineOptions;
 import com.tequeno.app.MainUtil;
-import com.tequeno.app.MyApplication;
 import com.tequeno.app.R;
 import com.tequeno.app.okhttp.GsonWrapper;
+import com.tequeno.app.permission.PermissionEnum;
+import com.tequeno.app.permission.PermissionUtil;
 
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
+import java.util.Arrays;
 import java.util.List;
 
 public class MapActivity extends AppCompatActivity {
@@ -39,7 +42,7 @@ public class MapActivity extends AppCompatActivity {
     private MapView mapView;
     private AMap aMap;
     private EditText et;
-    private EditText etDay;
+    private MapLocation mapLocation;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,20 +53,34 @@ public class MapActivity extends AppCompatActivity {
 //        myLocationStyle();
 
         et = findViewById(R.id.et_point_num);
-        etDay = findViewById(R.id.et_day);
 
         Button btnStart = findViewById(R.id.btn_start_locate);
         btnStart.setOnClickListener(view -> {
-            MyApplication.getInstance().startLocate();
-            MainUtil.toast( "开始定位...");
+            boolean b = PermissionUtil.checkPermission(this, Arrays.asList(PermissionEnum.ACCESS_FINE_LOCATION, PermissionEnum.ACCESS_BACKGROUND_LOCATION));
+            if(b) {
+                startLocate();
+            }
         });
+
         Button btnStop = findViewById(R.id.btn_stop_locate);
         btnStop.setOnClickListener(view -> {
-            MyApplication.getInstance().stopLocate();
-            MainUtil.toast("结束定位");
+            if (null == mapLocation) {
+                return;
+            }
+            mapLocation.stopLocate();
+            MainUtil.toast("结束定位!!!");
         });
-        Button btnRead = findViewById(R.id.btn_read_locate);
-        btnRead.setOnClickListener(this::drawPolyLine);
+
+        Button btnPoint = findViewById(R.id.btn_load_points);
+        btnPoint.setOnClickListener(this::drawPolyLine);
+
+        Button btnStatus = findViewById(R.id.btn_status);
+        btnStatus.setOnClickListener(v -> {
+            if (null == mapLocation) {
+                return;
+            }
+            mapLocation.status();
+        });
 
     }
 
@@ -122,11 +139,8 @@ public class MapActivity extends AppCompatActivity {
         if (!TextUtils.isEmpty(text)) {
             listSize = Integer.parseInt(text);
         }
-        String textDay = etDay.getText().toString();
-        if (TextUtils.isEmpty(textDay)) {
-            textDay = MainUtil.day();
-        }
-        List<LatLng> list = MapOpenHelper.getInstance(this).query(textDay, listSize);
+        String textDay = MainUtil.day();
+        List<LatLng> list = MapOpenHelper.getInstance().query(textDay, listSize);
         if (null == list || list.isEmpty()) {
             return;
         }
@@ -143,7 +157,7 @@ public class MapActivity extends AppCompatActivity {
 
         PolylineOptions polylineOptions = new PolylineOptions();
         polylineOptions.setPoints(list);
-        aMap.addPolyline(polylineOptions.width(MainUtil.dip2Px(this, 2)).color(Color.parseColor("#BA144D")));
+        aMap.addPolyline(polylineOptions.width(MainUtil.dip2Px(2)).color(Color.parseColor("#BA144D")));
     }
 
     @Override
@@ -168,5 +182,24 @@ public class MapActivity extends AppCompatActivity {
     public void onSaveInstanceState(@NonNull Bundle outState, @NonNull PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState, outPersistentState);
         mapView.onSaveInstanceState(outState); // 保存当前状态
+    }
+
+    private void startLocate() {
+        if (null == mapLocation) {
+            mapLocation = new MapLocation();
+        }
+        mapLocation.startLocate();
+        MainUtil.toast( "开始定位...");
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        Log.d(TAG, "onRequestPermissionsResult: " + requestCode + Arrays.toString(permissions) + Arrays.toString(grantResults));
+
+        if (PackageManager.PERMISSION_GRANTED == grantResults[0]) {
+            startLocate();
+        }
+
     }
 }

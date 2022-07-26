@@ -1,8 +1,30 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
-// plugins 全局使用的插件
-plugins {
-    id 'com.android.application' version '7.1.2' apply false
-    id 'com.android.library' version '7.1.2' apply false
+buildscript {
+    repositories {
+        jcenter()
+        mavenCentral()
+        google()
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:4.1.1'
+    }
+}
+
+allprojects {
+    repositories {
+        jcenter() // 由于org.webrtc:google-webrtc:1.0.32006仍在jcenter下 所以被迫保留
+        mavenCentral()
+        google()
+    }
+}
+
+ext {
+    compileSdk = 31 // 目标编译版本号
+//    buildToolsVersion = "31.1.0-rc1"
+    applicationId = "com.tequeno.app" // 模块的应用编号即包名 需要和AndroidManifest.xml中的package属性一致
+    minSdk = 26 // 运行支持的最低版本号
+    targetSdk = 31 // 目标运行版本号 请保持和compileSdk一致
+    versionCode = 1 // 版本号
+    versionName = "1.0.0" // 版本名字
 }
 
 task clean(type: Delete) {

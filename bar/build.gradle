@@ -1,18 +1,13 @@
-plugins {
-    id 'com.android.application'
-}
+apply plugin: 'com.android.application'
 
 android {
-    compileSdk 31
+    compileSdk rootProject.ext.compileSdk
 
     defaultConfig {
-        applicationId "com.tequeno.bar"
-        minSdk 26
-        targetSdk 31
-        versionCode 1
-        versionName "1.0"
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        minSdk rootProject.ext.minSdk
+        targetSdk rootProject.ext.targetSdk
+        versionCode rootProject.ext.versionCode
+        versionName rootProject.ext.versionName
     }
 
     buildTypes {
@@ -41,6 +36,9 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     // glide Generated API
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
+    // glide继承okhttp3加载http或者https资源图片
+    implementation "com.github.bumptech.glide:okhttp3-integration:4.11.0"
+
 
     // google guava
 //    implementation 'com.google.guava:guava:30.1.1-android'

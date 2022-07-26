@@ -16,6 +16,7 @@ import com.tequeno.app.form.ScrollActivity;
 import com.tequeno.app.intent.Link1Activity;
 import com.tequeno.app.login.LoginActivity;
 import com.tequeno.app.map.MapActivity;
+import com.tequeno.app.ndk.NdkActivity;
 import com.tequeno.app.okhttp.HttpActivity;
 
 /**
@@ -56,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
         amap();
 
         okhttp();
+
+        ndk();
     }
 
     /**
@@ -201,6 +204,17 @@ public class MainActivity extends AppCompatActivity {
         Button btnHttp = findViewById(R.id.btn_http);
         btnHttp.setOnClickListener(view -> {
             Intent intent = new Intent(this, HttpActivity.class);
+            startActivity(intent);
+        });
+    }
+
+    /**
+     * ndk的使用
+     */
+    private void ndk() {
+        Button btnNdk = findViewById(R.id.btn_ndk);
+        btnNdk.setOnClickListener(view -> {
+            Intent intent = new Intent(this, NdkActivity.class);
             startActivity(intent);
         });
     }

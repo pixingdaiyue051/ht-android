@@ -19,6 +19,7 @@ public class BroadcastActivity extends AppCompatActivity {
     private final static String TAG = "BroadcastActivity";
     private final static String DYNAMIC_RECEIVER = "_receiver.dynamic";
     private final static String ORDERED_RECEIVER = "_receiver.ordered";
+    public final static String ALARM_RECEIVER = "_receiver.alarm";
     private MyBackReceiver br;
     private MyOrderedReceiverA a;
     private MyOrderedReceiverB b;
@@ -77,7 +78,7 @@ public class BroadcastActivity extends AppCompatActivity {
         // 自定义闹钟接收器
         // 由于需要使用到系统时钟所以不能使用LocalBroadcastManager
         // Context也使用和project绑定的Context代替this 防止activity销毁后receiver仍持有对它的引用而内存泄露
-        IntentFilter filterAlarm = new IntentFilter(MyAlarmReceiver.ALARM_RECEIVER);
+        IntentFilter filterAlarm = new IntentFilter(ALARM_RECEIVER);
         alarmReceiver = new MyAlarmReceiver(MyApplication.getInstance());
         registerReceiver(alarmReceiver, filterAlarm);
     }

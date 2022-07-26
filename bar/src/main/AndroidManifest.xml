@@ -84,8 +84,6 @@
         <activity
             android:name=".TestActivity"
             android:exported="true"
-            android:screenOrientation="portrait"
-            tools:ignore="LockedOrientationActivity"
             android:configChanges="orientation|screenLayout|screenSize"
             android:supportsPictureInPicture="true"/>
         <activity

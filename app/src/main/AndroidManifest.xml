@@ -93,6 +93,9 @@
             android:name=".okhttp.HttpActivity"
             android:exported="false" />
         <activity
+            android:name=".ndk.NdkActivity"
+            android:exported="false" />
+        <activity
             android:name=".map.MapActivity"
             android:exported="false" />
         <activity

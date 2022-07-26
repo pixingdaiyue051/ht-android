@@ -5,7 +5,6 @@ import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.util.Log;
 
 /**
@@ -16,12 +15,13 @@ import android.util.Log;
 public class MyAlarmReceiver extends BroadcastReceiver {
 
     private final static String TAG = "MyAlarmReceiver";
-    public final static String ALARM_RECEIVER = "_receiver.alarm";
     private final PendingIntent pendingIntent;
     private final AlarmManager alarmManager;
 
     public MyAlarmReceiver(Context ctx) {
-        Intent intent = new Intent(ALARM_RECEIVER);
+        // 初始意图
+        Intent intent = new Intent(BroadcastActivity.ALARM_RECEIVER);
+        // 根据初始意图构建一个延时意图
         pendingIntent = PendingIntent.getBroadcast(ctx, 0, intent, PendingIntent.FLAG_IMMUTABLE);
         alarmManager = (AlarmManager) ctx.getSystemService(Context.ALARM_SERVICE);
     }

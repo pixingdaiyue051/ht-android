@@ -20,6 +20,7 @@ public class MapLocationService extends Service {
     private Handler handler;
     private HandlerThread thread;
     private AMapLocationClient mLocationClient;
+    private MapLocation mapLocation;
 
     public MapLocationService() {
         Log.d(TAG, TAG);
@@ -39,7 +40,7 @@ public class MapLocationService extends Service {
         Log.d(TAG, "onStartCommand: ");
         handler.post(() -> {
 //在LocationService中启动定位
-            mLocationClient = new AMapLocationClient(this.getApplicationContext());
+            mLocationClient = new AMapLocationClient(MyApplication.getInstance().getApplicationContext());
             AMapLocationClientOption mLocationOption = new AMapLocationClientOption();
 // 使用连续定位
             mLocationOption.setOnceLocation(false);
@@ -49,7 +50,10 @@ public class MapLocationService extends Service {
             mLocationClient.setLocationListener(aMapLocation -> Log.d(TAG, "locating: " + System.currentTimeMillis() + "--" + aMapLocation.getLatitude()));
             mLocationClient.startLocation();
         });
-        MyApplication.getInstance().isLocateServiceRunning = true;
+        if (null == mapLocation) {
+            mapLocation = new MapLocation();
+        }
+        mapLocation.isLocateServiceRunning = true;
         return START_NOT_STICKY;
     }
 
@@ -59,7 +63,7 @@ public class MapLocationService extends Service {
         super.onDestroy();
         mLocationClient.stopLocation();
         thread.quitSafely();
-        MyApplication.getInstance().isLocateServiceRunning = false;
+        mapLocation.isLocateServiceRunning = false;
     }
 
     @Nullable

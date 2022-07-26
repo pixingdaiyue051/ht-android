@@ -46,7 +46,7 @@ public class TestActivity extends AppCompatActivity {
         btnCs.setOnClickListener(this::cs);
 
         // TODO 待测试
-        IntentFilter filterClose = new IntentFilter(Intent.ACTION_CLOSE_SYSTEM_DIALOGS); // home按键 任务列表
+        IntentFilter filterClose = new IntentFilter(Intent.ACTION_CLOSE_SYSTEM_DIALOGS); // 监听系统广播
         closeReceiver = new ActionCloseReceiver();
         registerReceiver(closeReceiver, filterClose);
     }

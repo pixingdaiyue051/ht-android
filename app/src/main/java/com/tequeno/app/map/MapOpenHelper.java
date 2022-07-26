@@ -1,7 +1,6 @@
 package com.tequeno.app.map;
 
 import android.content.ContentValues;
-import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -22,10 +21,10 @@ public class MapOpenHelper extends SQLiteOpenHelper {
     private SQLiteDatabase mWdb = null;
 
     /**
-     * @param context
+     *
      */
-    private MapOpenHelper(Context context) {
-        super(context, MyApplication.DB_NAME, null, 1);
+    private MapOpenHelper() {
+        super(MyApplication.getInstance(), MyApplication.DB_NAME, null, 1);
     }
 
     /**
@@ -34,14 +33,13 @@ public class MapOpenHelper extends SQLiteOpenHelper {
      * 如果db_version有升级会触发onUpgrade方法
      * 如果db_version有降级会触发onDowngrade方法
      *
-     * @param context
      * @return
      */
-    public static MapOpenHelper getInstance(Context context) {
+    public static MapOpenHelper getInstance() {
         if (null == INSTANCE) {
             synchronized (MapOpenHelper.class) {
                 if (null == INSTANCE) {
-                    INSTANCE = new MapOpenHelper(context);
+                    INSTANCE = new MapOpenHelper();
                 }
             }
         }
